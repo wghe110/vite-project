@@ -1,8 +1,19 @@
-node_modules
+# dotenv environment variables file
 .DS_Store
-dist
-dist-ssr
-*.local
-.vscode
+
+# Package Manager
+node_modules
+.pnpm-debug.log*
+npm-debug.log*
+
+# Editor directories and files
+.idea
+
+# Bundle
 dist.zip
 dist.tar
+dist
+dist-ssr
+
+# local env files
+*.local
