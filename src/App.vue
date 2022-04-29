@@ -1,9 +1,17 @@
 <template>
-  <div class="demo">vue2-js-project</div>
+  <div>
+    <div class="demo">vue2-js-project</div>
+    <tit>tit</tit>
+  </div>
 </template>
 
 <script>
+import Tit from "/@/components/tit/index.vue";
+
 export default {
+  components: {
+    Tit,
+  },
   data() {
     return {};
   },
