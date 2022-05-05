@@ -41,6 +41,8 @@
         </slot>
         <span class="empty" v-else>{{ placeholder }}</span>
       </template>
+
+      <slot></slot>
     </van-field>
 
     <van-action-sheet

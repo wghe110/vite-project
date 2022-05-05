@@ -37,12 +37,20 @@ export default {
           path: "/#/select",
         },
         {
+          name: "select-radio 下拉框",
+          path: "/#/select-radio",
+        },
+        {
           name: "multiple-select 多选下拉框",
           path: "/#/multiple-select",
         },
         {
           name: "multiple-select-checkbox 多选下拉框",
           path: "/#/multiple-select-checkbox",
+        },
+        {
+          name: "slider 滑块",
+          path: "/#/slider",
         },
       ],
     };

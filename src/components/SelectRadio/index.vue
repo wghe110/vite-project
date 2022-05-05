@@ -1,27 +1,26 @@
 <template>
   <van-cell-group>
     <van-field
-      name="checkboxGroup"
+      name="radio"
       :label="label"
       input-align="right"
       v-bind="$attrs"
       :disabled="disabled"
     >
       <template #input>
-        <van-checkbox-group
-          v-model="checkboxGroup"
+        <van-radio-group
+          v-model="radioVal"
           direction="horizontal"
           :disabled="disabled"
         >
-          <van-checkbox
+          <van-radio
             :name="opt.value"
-            shape="square"
             v-for="opt in options"
             :key="opt.value"
             :disabled="opt.disabled"
-            >{{ opt.text }}</van-checkbox
+            >{{ opt.text }}</van-radio
           >
-        </van-checkbox-group>
+        </van-radio-group>
       </template>
 
       <slot></slot>
@@ -37,10 +36,8 @@ export default {
       default: "",
     },
     value: {
-      type: Array,
-      default() {
-        return [];
-      },
+      type: [String, Number],
+      default: "",
     },
     options: {
       type: Array,
@@ -57,7 +54,7 @@ export default {
     return {};
   },
   computed: {
-    checkboxGroup: {
+    radioVal: {
       get() {
         return this.value;
       },
