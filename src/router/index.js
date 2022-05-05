@@ -19,6 +19,10 @@ const router = new VueRouter({
         {
           path: '/multiple-select',
           component: () => import('../views/multiple-select/index.vue')
+        },
+        {
+          path: '/multiple-select-checkbox',
+          component: () => import('../views/multiple-select-checkbox/index.vue')
         }
       ]
     }

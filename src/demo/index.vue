@@ -40,6 +40,10 @@ export default {
           name: "multiple-select 多选下拉框",
           path: "/#/multiple-select",
         },
+        {
+          name: "multiple-select-checkbox 多选下拉框",
+          path: "/#/multiple-select-checkbox",
+        },
       ],
     };
   },

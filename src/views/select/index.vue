@@ -10,6 +10,14 @@
     <c-select
       label="单选框"
       placeholder="请选择"
+      v-model="val"
+      :options="opts"
+      disabled
+    ></c-select>
+
+    <c-select
+      label="单选框"
+      placeholder="请选择"
       v-model="val2"
       :options="opts2"
     ></c-select>
