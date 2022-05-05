@@ -1,30 +1,16 @@
 <template>
-  <div>
-    <div class="demo">vue2-js-project</div>
-    <tit>tit</tit>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import Tit from "/@/components/tit/index.vue";
-
 export default {
-  components: {
-    Tit,
-  },
+  components: {},
   data() {
     return {};
   },
-  methods: {
-    demoFn() {
-      const a = 1;
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-.demo {
-  color: red;
-}
 </style>
