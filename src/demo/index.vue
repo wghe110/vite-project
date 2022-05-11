@@ -52,6 +52,10 @@ export default {
           name: "slider 滑块",
           path: "/#/slider",
         },
+        {
+          name: "datetime-picker 时间选择",
+          path: "/#/datetime-picker",
+        },
       ],
     };
   },
