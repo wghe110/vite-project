@@ -56,6 +56,10 @@ export default {
           name: "datetime-picker 时间选择",
           path: "/#/datetime-picker",
         },
+        {
+          name: "upload 上传",
+          path: "/#/upload",
+        },
       ],
     };
   },
@@ -79,11 +83,13 @@ export default {
   height: 100vh;
   background-color: #f7f8fa;
   display: flex;
+  overflow: auto;
 }
 .content {
   padding: 30px;
   flex: 1;
   min-width: 0%;
+  overflow: auto;
 }
 .views {
   box-shadow: #ebedf0 0 4px 12px;

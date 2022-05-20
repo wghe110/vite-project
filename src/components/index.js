@@ -4,6 +4,7 @@ import MultipleSelect from './MultipleSelect/index.vue'
 import MultipleSelectCheckbox from './MultipleSelectCheckbox/index.vue'
 import Slider from './Slider/index.vue'
 import DatetimePicker from './DatetimePicker/index.vue'
+import Upload from './Upload/index.vue'
 
 const VantPlus = {
   install(Vue, options) {
@@ -14,6 +15,7 @@ const VantPlus = {
     Vue.component('c-multiple-select-checkbox', MultipleSelectCheckbox)
     Vue.component('c-slider', Slider)
     Vue.component('c-datetime-picker', DatetimePicker)
+    Vue.component('c-upload', Upload)
   }
 }
 

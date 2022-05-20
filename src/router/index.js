@@ -36,6 +36,10 @@ const router = new VueRouter({
           path: '/datetime-picker',
           component: () => import('../views/datetime-picker/index.vue')
         },
+        {
+          path: '/upload',
+          component: () => import('../views/upload/index.vue')
+        },
       ]
     }
   ]
