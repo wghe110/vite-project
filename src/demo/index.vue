@@ -60,12 +60,27 @@ export default {
           name: "upload 上传",
           path: "/#/upload",
         },
+        {
+          name: "form 表单",
+          path: "/#/form",
+        },
       ],
     };
+  },
+  created() {
+    const { path, query } = this.$route;
+    if (path === "/demo") {
+      if (query.path) this.activeMenu = query.path;
+    }
   },
   methods: {
     setIframeSrcFn(item) {
       this.activeMenu = item.path;
+      this.$router.push({
+        query: {
+          path: item.path,
+        },
+      });
     },
   },
 };

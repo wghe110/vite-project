@@ -7,6 +7,7 @@
       :label="label"
       @click="showPopFn"
       input-align="right"
+      error-message-align="right"
       is-link
       v-bind="$attrs"
       :disabled="disabled"

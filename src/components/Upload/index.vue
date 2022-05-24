@@ -6,6 +6,7 @@
       :disabled="disabled"
       v-bind="$attrs"
       input-align="right"
+      error-message-align="right"
     >
       <template #input>
         <van-uploader

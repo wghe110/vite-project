@@ -40,6 +40,10 @@ const router = new VueRouter({
           path: '/upload',
           component: () => import('../views/upload/index.vue')
         },
+        {
+          path: '/form',
+          component: () => import('../views/form/index.vue')
+        },
       ]
     }
   ]

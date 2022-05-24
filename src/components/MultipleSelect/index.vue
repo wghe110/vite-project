@@ -3,6 +3,7 @@
     <van-field
       is-link
       input-align="right"
+      error-message-align="right"
       :label="label"
       @click="!disabled && showPopFn()"
       :required="required"

@@ -4,6 +4,7 @@
       name="radio"
       :label="label"
       input-align="right"
+      error-message-align="right"
       v-bind="$attrs"
       :disabled="disabled"
     >
