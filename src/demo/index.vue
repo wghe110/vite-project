@@ -61,6 +61,10 @@ export default {
           path: "/#/upload",
         },
         {
+          name: "cascader 级联选择",
+          path: "/#/cascader",
+        },
+        {
           name: "form 表单",
           path: "/#/form",
         },

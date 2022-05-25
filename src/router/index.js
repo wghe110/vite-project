@@ -44,6 +44,10 @@ const router = new VueRouter({
           path: '/form',
           component: () => import('../views/form/index.vue')
         },
+        {
+          path: '/cascader',
+          component: () => import('../views/cascader/index.vue')
+        },
       ]
     }
   ]

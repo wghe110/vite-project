@@ -30,8 +30,7 @@
           <div class="tagBox">
             <van-tag
               type="primary"
-              size="large"
-              color="#345FD8"
+              color="#323233"
               plain
               v-for="tag in valueText"
               class="checked-tag"
@@ -113,7 +112,7 @@ export default {
     },
     checkedColor: {
       type: String,
-      default: "red",
+      default: "#345FD8",
     },
     disabled: {
       type: Boolean,

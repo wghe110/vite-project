@@ -85,7 +85,7 @@ export default {
     },
     checkedColor: {
       type: String,
-      default: "red",
+      default: "#345FD8",
     },
   },
   data() {
