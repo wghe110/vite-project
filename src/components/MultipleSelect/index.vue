@@ -51,6 +51,7 @@
       :title="label"
       @cancel="cancelFn"
       @click-overlay="cancelFn"
+      get-container="body"
     >
       <div class="content" :style="{ height: `${contentHeight}px` }">
         <van-cell-group>
@@ -200,5 +201,12 @@ export default {
 }
 .disabled {
   color: #c8c9cc;
+}
+::v-deep {
+  .van-field--error {
+    .empty {
+      color: #ee0a24;
+    }
+  }
 }
 </style>

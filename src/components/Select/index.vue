@@ -20,7 +20,7 @@
       :title="label"
       @click-overlay="clickOverlayFn"
       @cancel="cancelFn"
-      :get-container="getContainer"
+      get-container="body"
     >
       <div class="content" :style="{ height: `${contentHeight}px` }">
         <van-cell-group>
@@ -127,10 +127,6 @@ export default {
     },
     isChecked(obj) {
       return String(obj.value) === String(this.value);
-    },
-    // 返回一个特定的 DOM 节点，作为挂载的父节点
-    getContainer() {
-      return document.querySelector("body");
     },
   },
 };

@@ -13,7 +13,12 @@
       :disabled="disabled"
     />
 
-    <van-popup v-model="showPicker" position="bottom" round>
+    <van-popup
+      v-model="showPicker"
+      position="bottom"
+      round
+      get-container="body"
+    >
       <van-datetime-picker
         :type="type"
         @confirm="onConfirm"
