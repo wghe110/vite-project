@@ -12,22 +12,8 @@
       clearable
     >
       <template #input>
-        <van-checkbox-group
-          :value="value"
-          direction="horizontal"
-          class="checkboxgroup"
-        >
-          <van-checkbox
-            :name="opt.value"
-            shape="square"
-            v-for="opt in options"
-            :key="opt.value"
-            >{{ opt.text }}</van-checkbox
-          >
-        </van-checkbox-group>
-
         <slot name="values" :slot-scope="value" v-if="value.length">
-          <div class="tagBox">
+          <div class="tag-box">
             <van-tag
               type="primary"
               color="#323233"
@@ -40,6 +26,10 @@
           </div>
         </slot>
         <span class="empty" v-else>{{ placeholder }}</span>
+      </template>
+
+      <template #right-icon v-if="clearable && value.length">
+        <van-icon name="clear" color="#c8c9cc" @click.stop="clearFn" />
       </template>
 
       <slot></slot>
@@ -81,8 +71,15 @@
       </div>
 
       <div class="btn-box">
-        <van-button type="default" block @click="closePopFn">取消</van-button>
-        <van-button type="info" block @click="sureFn">确定</van-button>
+        <van-button type="default" size="small" block @click="closePopFn"
+          >取消</van-button
+        >
+        <van-button type="default" size="small" block @click="resetFn"
+          >重置</van-button
+        >
+        <van-button type="info" size="small" block @click="sureFn"
+          >确定</van-button
+        >
       </div>
     </van-action-sheet>
   </div>
@@ -115,6 +112,10 @@ export default {
       default: "#345FD8",
     },
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    clearable: {
       type: Boolean,
       default: false,
     },
@@ -168,14 +169,19 @@ export default {
       this.$emit("change", this.cacheValue);
       this.popVisible = false;
     },
+    resetFn() {
+      this.cacheValue = [];
+    },
+    clearFn() {
+      this.$emit("input", []);
+      this.$emit("change", []);
+      this.$emit("clear");
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.checkboxgroup {
-  display: none;
-}
 .empty {
   color: #ccc;
 }
@@ -207,5 +213,8 @@ export default {
       color: #ee0a24;
     }
   }
+}
+.tag-box {
+  line-height: 1;
 }
 </style>

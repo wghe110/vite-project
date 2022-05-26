@@ -13,6 +13,10 @@
       @click="!disabled && showFn()"
     >
       <slot></slot>
+
+      <template #right-icon v-if="clearable && value">
+        <van-icon name="clear" color="#c8c9cc" @click.stop="clearFn" />
+      </template>
     </van-field>
 
     <van-action-sheet
@@ -87,6 +91,10 @@ export default {
       type: String,
       default: "#345FD8",
     },
+    clearable: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -127,6 +135,11 @@ export default {
     },
     isChecked(obj) {
       return String(obj.value) === String(this.value);
+    },
+    clearFn() {
+      this.$emit("input", "");
+      this.$emit("change", "");
+      this.$emit("clear");
     },
   },
 };

@@ -156,6 +156,7 @@ export default {
         },
         (err) => {
           console.log("err", err);
+          this.$toast.fail("表单填写错误");
         }
       );
     },

@@ -59,6 +59,14 @@
     ></c-datetime-picker>
 
     <c-datetime-picker
+      label="clearable"
+      placeholder="请选择"
+      type="datetime"
+      v-model="clearVal"
+      clearable
+    ></c-datetime-picker>
+
+    <c-datetime-picker
       label="错误信息"
       placeholder="请选择"
       type="datetime"
@@ -80,6 +88,8 @@ export default {
       monthDayVal: "",
       datehourVal: "",
       datetimeVal: "",
+
+      clearVal: new Date(),
     };
   },
 };

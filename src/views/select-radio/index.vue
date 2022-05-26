@@ -7,20 +7,26 @@
     ></c-select-radio>
 
     <c-select-radio
-      label="单选框disabled"
+      label="预选值"
+      v-model="checkedVal"
+      :options="opts"
+    ></c-select-radio>
+
+    <c-select-radio
+      label="disabled"
       v-model="val"
       :options="opts"
       disabled
     ></c-select-radio>
 
     <c-select-radio
-      label="单选框 部分disabled"
+      label="部分disabled"
       v-model="val"
       :options="opts2"
     ></c-select-radio>
 
     <c-select-radio
-      label="单选框 错误信息"
+      label="错误信息"
       v-model="val"
       :options="opts2"
       error
@@ -35,6 +41,7 @@ export default {
   data() {
     return {
       val: "",
+      checkedVal: "dangyuan",
       opts: [
         { text: "党员", value: "dangyuan" },
         { text: "群众", value: "qunzhong" },

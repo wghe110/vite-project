@@ -3,15 +3,19 @@
     <van-field
       readonly
       clickable
-      :value="value"
+      :value="fieldVal"
       :label="label"
-      @click="showPopFn"
+      @click="!disabled && showPopFn()"
       input-align="right"
       error-message-align="right"
       is-link
       v-bind="$attrs"
       :disabled="disabled"
-    />
+    >
+      <template #right-icon v-if="clearable && fieldVal">
+        <van-icon name="clear" color="#c8c9cc" @click.stop="clearFn" />
+      </template>
+    </van-field>
 
     <van-popup
       v-model="showPicker"
@@ -21,9 +25,11 @@
     >
       <van-datetime-picker
         :type="type"
-        @confirm="onConfirm"
-        @cancel="showPicker = false"
-        ref="datetimeRef"
+        :key="renderKey"
+        v-model="currentDate"
+        @confirm="confirmFn"
+        @cancel="cancelFn"
+        @change="changeFn"
         :readonly="readonly"
       >
         <div></div>
@@ -36,8 +42,12 @@
       </van-datetime-picker>
 
       <div class="btn-box" v-if="!readonly">
-        <van-button type="default" block @click="cancelFn">取消</van-button>
-        <van-button type="info" block @click="confirmFn">确定</van-button>
+        <van-button type="default" block size="small" @click="cancelFn"
+          >取消</van-button
+        >
+        <van-button type="info" block size="small" @click="confirmFn"
+          >确定</van-button
+        >
       </div>
     </van-popup>
   </van-cell-group>
@@ -53,8 +63,10 @@ export default {
       default: "",
     },
     value: {
-      type: String,
-      default: "",
+      type: [Date, String],
+      default() {
+        return new Date();
+      },
     },
     type: {
       type: String,
@@ -68,10 +80,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    clearable: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       showPicker: false,
+      currentDate: new Date(),
+      renderKey: Date.now(),
     };
   },
   computed: {
@@ -104,51 +122,81 @@ export default {
 
       return arr;
     },
+    fieldVal() {
+      const { value, type } = this;
+      let str = "";
+      if (value && value instanceof Date) {
+        switch (type) {
+          case "date":
+            str = format(value, "yyyy-MM-dd");
+            break;
+          case "year-month":
+            str = format(value, "yyyy-MM");
+            break;
+          case "month-day":
+            str = format(value, "MM-dd");
+            break;
+          case "datehour":
+            str = format(value, "yyyy-MM-dd HH");
+            break;
+          case "datetime":
+            str = format(value, "yyyy-MM-dd HH:mm");
+            break;
+          default:
+            break;
+        }
+      } else if (typeof value === "string") {
+        str = value;
+      }
+
+      return str;
+    },
   },
   methods: {
     showPopFn() {
-      if (!this.disabled) this.showPicker = true;
-    },
-    onConfirm(val) {
-      console.log("onConfirm", val);
-      let value = val;
+      this.showPicker = true;
 
-      switch (this.type) {
-        case "time":
-          break;
-        case "date":
-          value = format(val, "yyyy-MM-dd");
-          break;
-        case "year-month":
-          value = format(val, "yyyy-MM");
-          break;
-        case "month-day":
-          value = format(val, "MM-dd");
-          break;
-        case "datehour":
-          value = format(val, "yyyy-MM-dd HH");
-          break;
-        case "datetime":
-          value = format(val, "yyyy-MM-dd HH:mm");
-          break;
-        default:
-          break;
+      if (this.type === "time") {
+        if (this.value) {
+          if (typeof this.value === "string") {
+            this.currentDate = this.value;
+          } else if (this.value instanceof Date) {
+            this.currentDate = format(this.value, "HH:mm");
+          }
+        } else {
+          this.currentDate = "";
+        }
+      } else {
+        if (this.value && this.value instanceof Date) {
+          this.currentDate = new Date(Date.parse(this.value));
+        } else {
+          this.currentDate = new Date();
+        }
       }
 
-      this.$emit("input", value);
-      this.$emit("change", value);
+      this.renderKey = Date.now();
+    },
+    confirmFn() {
+      let val = this.currentDate;
+      if (this.type === "time" && !this.currentDate) {
+        val = "00:00";
+      }
+      this.$emit("input", val);
+      this.$emit("change", val);
+      this.$emit("confirm", val);
 
       this.showPicker = false;
     },
-    confirmFn() {
-      const datetime = this.$refs.datetimeRef.getPicker();
-
-      datetime.confirm();
-    },
     cancelFn() {
-      const datetime = this.$refs.datetimeRef.getPicker();
-
-      datetime.cancel();
+      this.$emit("cancel");
+      this.showPicker = false;
+    },
+    changeFn() {
+      this.$emit("picker-change", this.currentDate);
+    },
+    clearFn() {
+      this.$emit("input", null);
+      this.$emit("change", null);
     },
   },
 };

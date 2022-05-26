@@ -4,32 +4,42 @@
       label="多项选择"
       v-model="val"
       :options="opts"
+    ></c-multiple-select>
+
+    <c-multiple-select
+      label="placeholder"
+      v-model="val"
+      :options="opts"
       placeholder="请选择"
     ></c-multiple-select>
 
     <c-multiple-select
-      label="禁用多项选择"
+      label="disabled"
       v-model="val"
       :options="opts"
-      placeholder="请选择"
       disabled
     ></c-multiple-select>
 
     <c-multiple-select
-      label="选项禁用多项选择"
-      v-model="val"
-      :options="opts2"
-      placeholder="请选择"
+      label="clearable"
+      v-model="clearVal"
+      :options="opts"
+      clearable
     ></c-multiple-select>
 
     <c-multiple-select
-      label="选项禁用多项选择"
+      label="选项禁用"
+      v-model="val"
+      :options="opts2"
+    ></c-multiple-select>
+
+    <c-multiple-select
+      label="错误信息"
       v-model="val"
       :options="opts2"
       placeholder="请选择"
       error
       error-message="错误信息"
-      error-message-align="right"
     ></c-multiple-select>
   </div>
 </template>
@@ -39,6 +49,7 @@ export default {
   data() {
     return {
       val: [],
+      clearVal: ["1", "2", "3", "4"],
       opts: [
         { text: "测试数据1", value: "1" },
         { text: "测试数据2", value: "2" },

@@ -1,29 +1,31 @@
 <template>
   <div>
+    <c-select label="单选框" v-model="val" :options="opts"></c-select>
+
     <c-select
-      label="单选框"
+      label="placeholder"
       placeholder="请选择"
       v-model="val"
       :options="opts"
     ></c-select>
 
     <c-select
-      label="单选框"
-      placeholder="请选择"
+      label="disabled"
       v-model="val"
       :options="opts"
       disabled
     ></c-select>
 
     <c-select
-      label="单选框"
+      label="clearable"
       placeholder="请选择"
       v-model="val2"
+      clearable
       :options="opts2"
     ></c-select>
 
     <c-select
-      label="单选框"
+      label="错误信息"
       placeholder="请选择"
       v-model="val"
       :options="opts"

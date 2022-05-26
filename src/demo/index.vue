@@ -3,7 +3,7 @@
     <aside class="aside">
       <van-cell-group>
         <van-cell
-          class="menu"
+          :class="{ menu: true, checked: item.path === activeMenu }"
           v-for="item in menus"
           :key="item.path"
           @click="setIframeSrcFn(item)"
@@ -65,12 +65,13 @@ export default {
           path: "/#/cascader",
         },
         {
-          name: "form 表单",
-          path: "/#/form",
-        },
-        {
           name: "tree-multiple-select 分类多选",
           path: "/#/tree-multiple-select",
+        },
+
+        {
+          name: "form 表单",
+          path: "/#/form",
         },
       ],
     };
@@ -121,5 +122,9 @@ export default {
 }
 .menu {
   cursor: pointer;
+  &.checked {
+    background-color: #f7f8fa;
+    font-weight: bolder;
+  }
 }
 </style>
