@@ -41,13 +41,13 @@
 </template>
 
 <script>
+import { addAncestorsFn, patArrayFn } from "./action";
+
 export default {
   props: {
     value: {
-      type: Array,
-      default() {
-        return [];
-      },
+      type: [String, Number],
+      default: "",
     },
     label: {
       type: String,
@@ -83,20 +83,38 @@ export default {
     };
   },
   computed: {
+    ancestorData() {
+      return addAncestorsFn(this.options);
+    },
+    patData() {
+      return patArrayFn(this.ancestorData);
+    },
     fieldVal() {
-      return this.value.map((item) => item.text).join("/");
+      const { patData, value } = this;
+      let str = value;
+
+      const obj = patData.find((item) => item.value === value);
+      if (obj) {
+        str = obj.ancestors
+          .concat([obj])
+          .map((item) => item.text)
+          .join("/");
+      }
+
+      return str;
     },
   },
   methods: {
     showFn() {
+      this.cascaderValue = this.value;
       this.popVisible = true;
     },
     // 全部选项选择完毕后，会触发 finish 事件
     onFinish(arg) {
-      const { selectedOptions } = arg;
+      const { value, selectedOptions } = arg;
 
-      this.$emit("change", selectedOptions);
-      this.$emit("input", selectedOptions);
+      this.$emit("change", value);
+      this.$emit("input", value);
       this.$emit("finish", arg);
 
       this.popVisible = false;
@@ -110,10 +128,8 @@ export default {
       this.$emit("cas-change", arg);
     },
     clearFn() {
-      console.log("clearFn");
-
-      this.$emit("change", []);
-      this.$emit("input", []);
+      this.$emit("change", "");
+      this.$emit("input", "");
     },
   },
 };

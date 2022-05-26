@@ -48,6 +48,10 @@ const router = new VueRouter({
           path: '/cascader',
           component: () => import('../views/cascader/index.vue')
         },
+        {
+          path: '/tree-multiple-select',
+          component: () => import('../views/tree-multiple-select/index.vue')
+        },
       ]
     }
   ]

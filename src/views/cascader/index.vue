@@ -3,7 +3,7 @@
     <c-cascader v-model="val" label="级联选择" :options="options"></c-cascader>
 
     <c-cascader
-      v-model="val"
+      v-model="clearVal"
       label="clearable"
       :options="options"
       clearable
@@ -24,7 +24,7 @@
     ></c-cascader>
 
     <c-cascader
-      v-model="val"
+      v-model="clearVal"
       label="错误信息"
       :options="options"
       placeholder="请选择"
@@ -38,7 +38,8 @@
 export default {
   data() {
     return {
-      val: [],
+      val: "",
+      clearVal: "330100",
       options: [
         {
           text: "浙江省",

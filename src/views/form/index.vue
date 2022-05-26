@@ -81,7 +81,7 @@
       ></c-multiple-select>
 
       <c-datetime-picker
-        label="年月日小时分"
+        label="生日"
         placeholder="请选择"
         type="datetime"
         v-model="formState.datetime"
@@ -95,6 +95,14 @@
         required
         :rules="rules.upload"
       ></c-upload>
+
+      <c-cascader
+        v-model="formState.addr"
+        label="籍贯"
+        placeholder="请选择"
+        clearable
+        :options="addrOpts"
+      ></c-cascader>
     </van-form>
 
     <div class="btn-box">
@@ -124,6 +132,18 @@ export default {
         { text: "二次元", value: "1" },
         { text: "中二", value: "2" },
         { text: "杀马特", value: "3" },
+      ],
+      addrOpts: [
+        {
+          text: "浙江省",
+          value: "330000",
+          children: [{ text: "杭州市", value: "330100" }],
+        },
+        {
+          text: "江苏省",
+          value: "320000",
+          children: [{ text: "南京市", value: "320100" }],
+        },
       ],
     };
   },

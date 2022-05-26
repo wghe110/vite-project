@@ -68,6 +68,10 @@ export default {
           name: "form 表单",
           path: "/#/form",
         },
+        {
+          name: "tree-multiple-select 分类多选",
+          path: "/#/tree-multiple-select",
+        },
       ],
     };
   },
@@ -79,6 +83,8 @@ export default {
   },
   methods: {
     setIframeSrcFn(item) {
+      if (this.activeMenu === item.path) return;
+
       this.activeMenu = item.path;
       this.$router.push({
         query: {

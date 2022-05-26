@@ -7,6 +7,7 @@ import DatetimePicker from './DatetimePicker/index.vue'
 import Upload from './Upload/index.vue'
 import Field from './Field/index.vue'
 import Cascader from './Cascader/index.vue'
+import TreeMultipleSelect from './TreeMultipleSelect/index.vue'
 
 const VantPlus = {
   install(Vue, options) {
@@ -20,6 +21,7 @@ const VantPlus = {
     Vue.component('c-upload', Upload)
     Vue.component('c-field', Field)
     Vue.component('c-cascader', Cascader)
+    Vue.component('c-tree-multiple-select', TreeMultipleSelect)
   }
 }
 
