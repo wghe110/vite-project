@@ -9,7 +9,6 @@
       input-align="right"
       error-message-align="right"
       is-link
-      v-bind="$attrs"
       :disabled="disabled"
     >
       <template #right-icon v-if="clearable && fieldVal">
@@ -31,6 +30,7 @@
         @cancel="cancelFn"
         @change="changeFn"
         :readonly="readonly"
+        v-bind="$attrs"
       >
         <div></div>
 
@@ -42,12 +42,8 @@
       </van-datetime-picker>
 
       <div class="btn-box" v-if="!readonly">
-        <van-button type="default" block size="small" @click="cancelFn"
-          >取消</van-button
-        >
-        <van-button type="info" block size="small" @click="confirmFn"
-          >确定</van-button
-        >
+        <van-button type="default" block @click="cancelFn">取消</van-button>
+        <van-button type="info" block @click="confirmFn">确定</van-button>
       </div>
     </van-popup>
   </van-cell-group>

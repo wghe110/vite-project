@@ -79,11 +79,9 @@
       </section>
 
       <div class="btn-box">
-        <van-button size="small" block @click="cancelFn">取消</van-button>
-        <van-button size="small" block @click="resetFn">重置</van-button>
-        <van-button size="small" block type="info" @click="sureFn"
-          >确定</van-button
-        >
+        <van-button block @click="cancelFn">取消</van-button>
+        <van-button block @click="resetFn">重置</van-button>
+        <van-button block type="info" @click="sureFn">确定</van-button>
       </div>
     </van-popup>
   </div>

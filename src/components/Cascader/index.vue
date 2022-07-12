@@ -12,9 +12,14 @@
         :placeholder="placeholder"
         :disabled="disabled"
         v-bind="$attrs"
-        @click="!disabled && showFn()"
+        :type="autosize ? `textarea` : 'text'"
+        :autosize="autosize"
+        @click="!readonly && !disabled && showFn()"
       >
-        <template #right-icon v-if="clearable && fieldVal">
+        <template
+          #right-icon
+          v-if="!readonly && !disabled && clearable && fieldVal"
+        >
           <van-icon name="clear" color="#c8c9cc" @click.stop="clearFn" />
         </template>
       </van-field>
@@ -67,6 +72,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
     checkedColor: {
       type: String,
       default: "#345FD8",
@@ -74,6 +83,14 @@ export default {
     clearable: {
       type: Boolean,
       default: false,
+    },
+    autosize: {
+      type: Boolean,
+      default: false,
+    },
+    spaceMark: {
+      type: String,
+      default: "/",
     },
   },
   data() {
@@ -98,7 +115,7 @@ export default {
         str = obj.ancestors
           .concat([obj])
           .map((item) => item.text)
-          .join("/");
+          .join(this.spaceMark);
       }
 
       return str;

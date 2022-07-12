@@ -71,15 +71,9 @@
       </div>
 
       <div class="btn-box">
-        <van-button type="default" size="small" block @click="closePopFn"
-          >取消</van-button
-        >
-        <van-button type="default" size="small" block @click="resetFn"
-          >重置</van-button
-        >
-        <van-button type="info" size="small" block @click="sureFn"
-          >确定</van-button
-        >
+        <van-button type="default" block @click="closePopFn">取消</van-button>
+        <van-button type="default" block @click="resetFn">重置</van-button>
+        <van-button type="info" block @click="sureFn">确定</van-button>
       </div>
     </van-action-sheet>
   </div>

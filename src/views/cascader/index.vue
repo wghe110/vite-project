@@ -1,6 +1,13 @@
 <template>
   <div>
     <c-cascader v-model="val" label="级联选择" :options="options"></c-cascader>
+    <c-cascader
+      v-model="val"
+      label="自适应高度"
+      autosize
+      rows="1"
+      :options="options"
+    ></c-cascader>
 
     <c-cascader
       v-model="clearVal"
@@ -10,10 +17,25 @@
     ></c-cascader>
 
     <c-cascader
+      v-model="clearVal"
+      label="更改间隔符号"
+      :options="options"
+      clearable
+      space-mark="-"
+    ></c-cascader>
+
+    <c-cascader
       v-model="val"
       label="disabled"
       :options="options"
       disabled
+    ></c-cascader>
+
+    <c-cascader
+      v-model="val"
+      label="readonly"
+      :options="options"
+      readonly
     ></c-cascader>
 
     <c-cascader
@@ -44,7 +66,18 @@ export default {
         {
           text: "浙江省",
           value: "330000",
-          children: [{ text: "杭州市", value: "330100" }],
+          children: [
+            {
+              text: "杭州市",
+              value: "330100",
+              children: [
+                {
+                  text: "很长的很长的很长的很长的很长的很长的区",
+                  value: "330101",
+                },
+              ],
+            },
+          ],
         },
         {
           text: "江苏省",
