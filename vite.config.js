@@ -3,9 +3,9 @@ import { createVuePlugin } from 'vite-plugin-vue2'
 export default {
   resolve: {
     alias: {
-      '/@': '/src',
-      '/@public': '/public'
-    }
+      '@': '/src',
+      '$p': '/public'
+    },
   },
   plugins: [createVuePlugin()]
 }

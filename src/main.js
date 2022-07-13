@@ -6,22 +6,21 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 import router from './router/index'
 
-//vant
-import Vant from 'vant'
-import 'vant/lib/index.css'
-Vue.use(Vant)
+// vuex
+import store from './store/index'
 
-//vant-plus
-import VantPlus from './components/index'
-Vue.use(VantPlus)
-
-//deskboard
-import '@vant/touch-emulator'
+// eventBus
+Vue.prototype.$eventBus = new Vue();
 
 // normalize.css
 import 'normalize.css'
 
+//全局组件
+import GlobalComponents from './components/index'
+Vue.use(GlobalComponents)
+
 new Vue({
   render: h => h(App),
   router,
+  store,
 }).$mount('#app')

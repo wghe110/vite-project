@@ -9,14 +9,16 @@
     "javascript",
     "javascriptreact",
     "html",
-    "vue",
-    "markdown"
+    "vue"
   ],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "html",
-    "vue",
-    "markdown"
+    "vue"
   ],
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src",
+    "$p": "${workspaceRoot}/public",
+  }
 }
