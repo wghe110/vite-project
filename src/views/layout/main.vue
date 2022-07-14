@@ -24,6 +24,7 @@ import {
   loadDicts,
   initHeaderAndAside,
   initToken,
+  createLoading,
 } from "./pre-load";
 
 export default {
@@ -38,7 +39,13 @@ export default {
     initToken(to);
 
     // 加载必须资源(菜单/必须字典/用户信息...)，阻塞资源
-    Promise.all([loadUserInfo(), loadMenus(), loadDicts()]).then(next);
+    const loading = createLoading();
+    loading.show();
+    Promise.all([loadUserInfo(), loadMenus(), loadDicts()])
+      .then(next)
+      .finally(() => {
+        loading.hide();
+      });
   },
   computed: {
     ...mapState(["showHeader", "showAside"]),
