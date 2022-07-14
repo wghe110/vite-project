@@ -1,8 +1,14 @@
 <template>
   <div class="wrap">
-    <header class="header">头部</header>
+    <header class="header" v-if="showHeader">
+      头部 showHeader={{ showHeader }}
+    </header>
+
     <div class="content">
-      <aside class="aside">左侧</aside>
+      <aside class="aside" v-if="showAside">
+        左侧 showAside={{ showAside }}
+      </aside>
+
       <div class="inner-content">
         <router-view></router-view>
       </div>
@@ -11,10 +17,31 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import {
+  loadUserInfo,
+  loadMenus,
+  loadDicts,
+  initHeaderAndAside,
+  initToken,
+} from "./pre-load";
+
 export default {
   components: {},
   data() {
     return {};
+  },
+  beforeRouteEnter(to, from, next) {
+    // 判断是否隐藏头部和左侧菜单
+    initHeaderAndAside(to);
+    // 判断是否携带token
+    initToken(to);
+
+    // 加载必须资源(菜单/必须字典/用户信息...)，阻塞资源
+    Promise.all([loadUserInfo(), loadMenus(), loadDicts()]).then(next);
+  },
+  computed: {
+    ...mapState(["showHeader", "showAside"]),
   },
   methods: {},
 };

@@ -10,6 +10,8 @@ Vue.use(Vuex)
 // 全局
 const store = new Vuex.Store({
   state: {
+    showHeader: true,
+    showAside: true,
     global: 1
   },
   getters,
