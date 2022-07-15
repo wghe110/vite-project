@@ -7,6 +7,7 @@
 ## 集成
   - `vue-router`
   - `vuex`
+  - `axios`
   - `eventBus`
   - `normalize.css`
 ## 样式
@@ -39,3 +40,18 @@
 
 ## 携带token访问
   - `${url}?token=xxxxx` 可以从外部传入token访问
+
+## 初始化加载必要资源
+配置文件在`src`>`views`>`layout`>`pre-load.js`内配置（如果复杂，可以抽出文件）
+- 判断头部和左侧是否展示
+- 判断url是否携带token，如果有则写入本地
+- 加载必要的前置资源（用户信息/菜单/字典等）
+
+## 请求配置
+配置文件`src`>`apis`>`index.js`
+- 默认 **25秒** 请求超时
+- 默认 从`localStorage` 获取 `token`，并写入到请求头部的`common['Authorization']`内
+- 请求格式可以参考[axios官网](https://axios-http.com/zh/) 或者 `src > apis > demo.js`
+- TODO 配置请求超时提示
+- TODO 配置登录失效提示和跳转
+- TODO 配置请求逻辑错误，把后台返回message提示给用户
