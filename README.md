@@ -55,3 +55,8 @@
 - TODO 配置请求超时提示
 - TODO 配置登录失效提示和跳转
 - TODO 配置请求逻辑错误，把后台返回message提示给用户
+
+## UI组件库推荐
+ - 移动端：[Vant 2](https://youzan.github.io/vant/v2/#/zh-CN/)
+ - [ElementUI](https://element.eleme.cn/#/zh-CN/component/installation)
+ - [Ant Design Vue](https://1x.antdv.com/docs/vue/introduce-cn/)
