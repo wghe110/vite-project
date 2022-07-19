@@ -19,7 +19,7 @@
   - `javascript`
 ## node版本
   ```sh
-    v14.20.0
+    v14.20.0/v16.15.1
   ```
 ## vscode插件
   - `Vetur`
