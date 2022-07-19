@@ -13,6 +13,10 @@ const router = new VueRouter({
         {
           path: '/path',
           component: () => import('@/views/path/index.vue')
+        },
+        {
+          path: '/jsx',
+          component: () => import('@/views/jsx/index.jsx')
         }
       ]
     },

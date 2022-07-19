@@ -10,6 +10,7 @@
   - `axios`
   - `eventBus`
   - `normalize.css`
+  - `jsx`
 ## 样式
   - `css`
   - `scss`

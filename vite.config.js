@@ -1,4 +1,5 @@
 import { createVuePlugin } from 'vite-plugin-vue2'
+import vueJsx from '@vitejs/plugin-vue2-jsx'
 
 export default {
   resolve: {
@@ -7,5 +8,8 @@ export default {
       '$p': '/public'
     },
   },
-  plugins: [createVuePlugin()]
+  plugins: [
+    createVuePlugin(),
+    vueJsx()
+  ]
 }

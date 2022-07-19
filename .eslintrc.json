@@ -11,8 +11,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "parser": "@babel/eslint-parser",
   "plugins": [
-    "vue"
+    "vue",
+    "html"
   ],
   "rules": {
     "vue/multi-word-component-names": 1,

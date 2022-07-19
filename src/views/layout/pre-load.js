@@ -7,7 +7,7 @@ const loadUserInfo = () => {
       setTimeout(() => {
         // 获取用户信息，并保存到vuex里面（如果失败请用ui组件进行提示） TODO
         resolve()
-      }, 1500)
+      }, 500)
   }) 
 }
 
@@ -17,7 +17,7 @@ const loadMenus = () => {
     setTimeout(() => {
       // 获取菜单，注册动态路由（如果失败请用ui组件进行提示） TODO
       resolve()
-    }, 2500)
+    }, 1500)
   }) 
 }
 
@@ -27,7 +27,7 @@ const  loadDicts = () => {
     setTimeout(() => {
       // 获取字典信息，并保存到vuex的modules/dict里面（如果失败请用ui组件进行提示） TODO
       resolve()
-    }, 3500)
+    }, 2000)
   }) 
 }
 
