@@ -35,7 +35,7 @@
  - 启动本地服务 `npm run serve`
  - 打包 `npm run build`
 
- ## 隐藏头部和左侧导航栏（外部饮用可能用到）
+ ## 隐藏头部和左侧导航栏（外部引用可能用到）
   - `${url}?hideHeader=true`可以隐藏头部
   - `${url}?hideAside=true`可以隐藏左侧菜单
 
