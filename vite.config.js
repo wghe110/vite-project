@@ -1,17 +1,15 @@
-import { createVuePlugin } from 'vite-plugin-vue2'
-import vueJsx from '@vitejs/plugin-vue2-jsx'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 
-export default {
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': '/src',
       '$p': '/public'
-    },
+    }
   },
-  plugins: [
-    createVuePlugin(),
-    vueJsx()
-  ],
   server: {
     // 反向代理配置
     proxy: {}
@@ -24,4 +22,4 @@ export default {
     // 预览模式代理
     proxy: {}
   }
-}
+})

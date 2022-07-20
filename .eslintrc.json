@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
@@ -11,10 +12,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "parser": "@babel/eslint-parser",
   "plugins": [
-    "vue",
-    "html"
+    "vue"
   ],
   "rules": {
     "vue/multi-word-component-names": 1,
