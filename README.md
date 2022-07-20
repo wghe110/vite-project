@@ -11,6 +11,7 @@
   - `eventBus`
   - `normalize.css`
   - `jsx`
+  - `eslint`
 ## 样式
   - `css`
   - `scss`
@@ -22,7 +23,7 @@
     v14.20.0/v16.15.1
   ```
 ## vscode插件
-  - `Vetur`
+  - `Vue Language Features (Volar)`
   - `ESLint`
   - `Path Intellisense`
   - `Git History`

@@ -11,5 +11,17 @@ export default {
   plugins: [
     createVuePlugin(),
     vueJsx()
-  ]
+  ],
+  server: {
+    // 反向代理配置
+    proxy: {}
+  },
+  build: {
+    outDir: 'dist',
+    chunkSizeWarningLimit: 500
+  },
+  preview: {
+    // 预览模式代理
+    proxy: {}
+  }
 }
