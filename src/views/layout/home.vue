@@ -1,12 +1,12 @@
 <template>
   <div class="wrap">
-    <header class="header">
-      头部 showHeader={{ }}
+    <header class="header" v-if="showHeader">
+      头部 showHeader={{ showHeader }}
     </header>
 
     <div class="content">
-      <aside class="aside">
-        左侧 showAside={{ }}
+      <aside class="aside" v-if="showAside">
+        左侧 showAside={{ showAside }}
       </aside>
 
       <div class="inner-content">
@@ -17,6 +17,9 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+
+import globalStore from '@/store/global'
 import {
   loadUserInfo,
   loadMenus,
@@ -45,6 +48,15 @@ export default {
       return false;
     }
   },
+  setup() {
+    const store = globalStore()
+    setTimeout(() => {
+      store.showAside = false;
+    }, 5000)
+  },
+  computed: {
+    ...mapState(globalStore, ['showHeader', 'showAside'])
+  }
 }
 </script>
 

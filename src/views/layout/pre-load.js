@@ -1,4 +1,5 @@
 import router from '@/router/index'
+import globalStore from '@/store/global'
 
 // 加载用户信息
 const loadUserInfo = () => {
@@ -35,8 +36,9 @@ const initHeaderAndAside = (router) => {
   const {
     query: { hideHeader, hideAside },
   } = router;
-  // if (hideHeader) store.commit("setShowHeader", false);
-  // if (hideAside) store.commit("setShowAside", false);
+  const store = globalStore()
+  if (hideHeader) store.showHeader = false;
+  if (hideAside) store.showAside = false;
 }
 
 // 判断url是否携带token，如果有，写入本地
