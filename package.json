@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "axios": "^0.27.2",
     "eslint-plugin-html": "^7.0.0",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.16",
+    "qs": "^6.11.0",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2"
   },
