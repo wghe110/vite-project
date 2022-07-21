@@ -13,7 +13,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "vue"
+    "vue",
+    "html"
   ],
   "rules": {
     "vue/multi-word-component-names": 1,

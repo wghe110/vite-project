@@ -1,7 +1,13 @@
 export default [
   {
     path: '/',
-    component: () => import('@/views/layout/home.vue')
+    component: () => import('@/views/layout/home.vue'),
+    children: [
+      {
+        path: '/jsx',
+        component: () => import('@/views/layout/jsx/index.vue')
+      }
+    ]
   },
   {
     path: '/login',

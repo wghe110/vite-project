@@ -1,5 +1,3 @@
 <template>
-  <div>
-    login
-  </div>
+  login
 </template>
