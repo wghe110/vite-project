@@ -6,7 +6,11 @@ export default [
       {
         path: '/jsx',
         component: () => import('@/views/layout/jsx/index.vue')
-      }
+      },
+      {
+        path: '/demo',
+        component: () => import('@/views/demo/index.vue')
+      },
     ]
   },
   {
