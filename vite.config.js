@@ -5,7 +5,7 @@ export default {
   resolve: {
     alias: {
       '@': '/src',
-      '$p': '/public'
+      '@public': '/public'
     },
   },
   plugins: [

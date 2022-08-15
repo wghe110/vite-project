@@ -12,6 +12,9 @@
     "sourceType": "module"
   },
   "parser": "@babel/eslint-parser",
+  "ecmaFeatures": {
+    "jsx": false
+  },
   "plugins": [
     "vue",
     "html"
