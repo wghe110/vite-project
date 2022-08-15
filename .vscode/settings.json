@@ -21,7 +21,7 @@
   // 配置路径别名
   "path-intellisense.mappings": {
     "@": "${workspaceRoot}/src",
-    "$p": "${workspaceRoot}/public",
+    "@public": "${workspaceRoot}/public",
   },
   // 配置不同文件格式化所用的插件以及格式
   "[javascript]": {

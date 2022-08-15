@@ -31,7 +31,7 @@
   - `GitLens — Git supercharged`
 ## 路径写法
 - `@` - `/src`
-- `$p` - `/public`
+- `@public` - `/public`
 
 ## 命令
  - 安装依赖 `npm install`
