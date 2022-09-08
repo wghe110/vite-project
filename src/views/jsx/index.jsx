@@ -10,7 +10,7 @@ export default {
   render(h) {
     return (
       <div>
-        <span style="color: red" onClick={this.clickFn}>abc的d</span>
+        <span style="color: red" onClick={this.clickFn}>abcd的d</span>
         <Demo></Demo>
       </div>
     );
