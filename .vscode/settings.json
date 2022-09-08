@@ -1,0 +1,39 @@
+{
+  // 开启自动格式化并用eslint格式化
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "vue"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "vue"
+  ],
+  // 配置路径别名
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src",
+  },
+  // 配置不同文件格式化所用的插件以及格式
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  // git配置
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true
+}

@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "Vue.volar",
+    "dbaeumer.vscode-eslint",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "christian-kohler.path-intellisense",
+    "modyqyw.vscode-uni-app-snippets",
+    "modyqyw.vscode-uni-ui-snippets"
+  ]
+}

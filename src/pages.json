@@ -1,0 +1,76 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "欢迎页"
+      }
+    },
+    {
+      "path": "pages/registered/index",
+      "style": {
+        "navigationBarTitleText": "注册页"
+      }
+    },
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "上滑加载和下拉刷新"
+      }
+    },
+    {
+      "path": "pages/form/index",
+      "style": {
+        "navigationBarTitleText": "表单"
+      }
+    },
+    {
+      "path": "pages/out-link/index",
+      "style": {
+        "navigationBarTitleText": "外链"
+      }
+    },
+    {
+      "path": "pages/common/outside-link",
+      "style": {
+        "navigationBarTitleText": "外链"
+      }
+    },
+    {
+      "path": "pages/custom-navbar/index",
+      "style": {
+        "navigationBarTitleText": "自定义头部",
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff"
+  },
+  "tabBar": {
+    "color": "#fff",
+    "selectedColor": "#fff",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/index"
+      },
+      {
+        "pagePath": "pages/form/index"
+      },
+      {
+        "pagePath": "pages/out-link/index"
+      },
+      {
+        "pagePath": "pages/custom-navbar/index"
+      }
+    ]
+  }
+}

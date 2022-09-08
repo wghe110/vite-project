@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "types": [
+      "@dcloudio/types",
+      "miniprogram-api-typings",
+      "mini-types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "target": "ES2020",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
