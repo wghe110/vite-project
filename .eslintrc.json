@@ -20,6 +20,7 @@
     "vue/multi-word-component-names": 0,
     "no-unused-vars": 1,
     "no-debugger": 1,
-    "vue/comment-directive": 0
+    "vue/comment-directive": 0,
+    "react/react-in-jsx-scope": 0
   }
 }
