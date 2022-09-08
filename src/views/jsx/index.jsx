@@ -12,7 +12,7 @@ export default {
       <div>
         <span style="color: red" on-click={
           this.clickFn
-        }>a</span>
+        }>abc</span>
         <Demo></Demo>
       </div>
     );

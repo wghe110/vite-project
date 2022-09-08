@@ -43,5 +43,7 @@
   // git配置
   "git.autofetch": true,
   "git.confirmSync": false,
-  "git.enableSmartCommit": true
+  "git.enableSmartCommit": true,
+  // 添加jsx配置
+  "editor.snippetSuggestions": "top"
 }
