@@ -1,5 +1,5 @@
 <template>
-  <c-wrap>
+  <c-wrap safe-bar-color="#fff">
     <view class="wrap">
       <view class="header">
         <view class="nav-bar" :style="`padding-top: ${navHeight}px`">

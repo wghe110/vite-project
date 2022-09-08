@@ -1,5 +1,5 @@
 <template>
-  <c-wrap>
+  <c-wrap safe-bar-color="#fff">
     <view class="inner-con">
       <view style="margin-bottom: 80rpx">
         <c-section class="opt-form">

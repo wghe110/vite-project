@@ -10,11 +10,6 @@ const getToken = () => {
   return uni.getStorageSync('token') || ''
 }
 
-// 写入事件接口认证User-Type: C,区分移动/PC
-const getEventToken = () => {
-  return 'C'
-}
-
 // 下面对常用的请求进行简单封装
 const get = (url, params = {}) => {
   return new Promise((resolve, reject) => {
@@ -25,8 +20,7 @@ const get = (url, params = {}) => {
       },
       method: 'GET',
       header: {
-        'Authorization': getToken(),
-        'User-Type': getEventToken()
+        'Authorization': getToken()
       },
       success: (res) => {
         const { flag, data } = resHandle(res)
@@ -48,8 +42,7 @@ const put = (url, params = {}) => {
       },
       method: 'PUT',
       header: {
-        'Authorization': getToken(),
-        'User-Type': getEventToken()
+        'Authorization': getToken()
       },
       success: (res) => {
         const { flag, data } = resHandle(res)
@@ -71,8 +64,7 @@ const post = (url, params) => {
       },
       method: 'POST',
       header: {
-        'Authorization': getToken(),
-        'User-Type': getEventToken()
+        'Authorization': getToken()
       },
       success: (res) => {
         const { flag, data } = resHandle(res)

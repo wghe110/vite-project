@@ -9,7 +9,6 @@ uni.addInterceptor('request', {
   },
   success(args) {
     // 请求成功后，根据状态码进行统一报错处理
-    console.log('success', args)
     const { data: { code, message, msg } } = args;
     if (code !== 200 && code !== 0) {
       //token失效

@@ -1,5 +1,5 @@
 <template>
-  <c-wrap>
+  <c-wrap safe-bar-color="#fff">
     <view class="scroll-box">
       <c-scroll-load-more :is-finished="isFinished" :load="searchFn" refresher-enabled :refresh="refreshFn">
         <view class="inner-con">

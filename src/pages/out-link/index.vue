@@ -1,5 +1,5 @@
 <template>
-  <c-wrap>
+  <c-wrap safe-bar-color="#fff">
     <view class="link">
       <navigator url="/pages/common/outside-link?url=https://www.baidu.com/" open-type="navigate"
         hover-class="navigator-hover">

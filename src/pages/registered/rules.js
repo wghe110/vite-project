@@ -43,53 +43,6 @@ const rules = {
       },
     ]
   },
-  url: {
-    rules: [
-      {
-        required: true,
-        errorMessage: '请输入链接地址',
-      },
-      {
-        format: 'url',
-        errorMessage: '链接格式错误',
-      },
-    ]
-  },
-  reg: {
-    rules: [
-      {
-        required: true,
-        errorMessage: '请输入',
-      },
-      {
-        pattern: /^[a-z]+$/,
-        errorMessage: '请输入小写字母',
-      },
-    ]
-  },
-  opt: {
-    rules: [
-      {
-        required: true,
-        errorMessage: '请输入自定义',
-      },
-      {
-        validateFunction(val) {
-          const num = +val
-          return num && num >= 3 && num <= 5;
-        },
-        errorMessage: '请输入3到5',
-      },
-    ]
-  },
-  vercode: {
-    rules: [
-      {
-        required: true,
-        errorMessage: '请输入校验码',
-      },
-    ]
-  },
 }
 
 export default rules

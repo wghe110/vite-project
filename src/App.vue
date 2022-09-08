@@ -21,8 +21,6 @@ export default {
 /*每个页面公共css */
 page {
   font-family: PingFangSC-Regular;
-  padding-bottom: env(safe-area-inset-bottom);
-  box-sizing: border-box;
   height: 100vh;
 }
 
