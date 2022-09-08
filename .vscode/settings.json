@@ -36,5 +36,7 @@
   // git配置
   "git.autofetch": true,
   "git.confirmSync": false,
-  "git.enableSmartCommit": true
+  "git.enableSmartCommit": true,
+  // react的jsx支持
+  "editor.snippetSuggestions": "top"
 }
