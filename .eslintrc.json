@@ -6,7 +6,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:vue/vue3-essential"
+    "plugin:vue/vue3-essential",
+    "plugin:react/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -17,9 +18,10 @@
     "html"
   ],
   "rules": {
-    "vue/multi-word-component-names": 1,
+    "vue/multi-word-component-names": 0,
     "no-unused-vars": 1,
     "no-debugger": 1,
-    "vue/comment-directive": 0
+    "vue/comment-directive": 0,
+    "react/react-in-jsx-scope": 0
   }
 }
