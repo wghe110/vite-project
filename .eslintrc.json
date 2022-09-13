@@ -18,6 +18,6 @@
     "vue/multi-word-component-names": 1,
     "no-unused-vars": 1,
     "no-debugger": 1,
-    "vue/comment-directive": 0,
+    "vue/comment-directive": 0
   }
 }
