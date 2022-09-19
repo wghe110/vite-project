@@ -1,22 +1,10 @@
 <template>
   <van-cell-group>
-    <van-field
-      name="uploader"
-      :label="label"
-      :disabled="disabled"
-      v-bind="$attrs"
-      input-align="right"
-      error-message-align="right"
-    >
+    <van-field name="uploader" :label="label" :disabled="disabled" v-bind="$attrs" input-align="right"
+      error-message-align="right">
       <template #input>
-        <van-uploader
-          v-model="uploader"
-          :disabled="disabled"
-          v-bind="$attrs"
-          v-on="$listeners"
-          :deletable="!disabled"
-          :after-read="action ? uploadFn : afterRead"
-        />
+        <van-uploader v-model="uploader" :disabled="disabled" v-bind="$attrs" v-on="$listeners" :deletable="!disabled"
+          :after-read="action ? uploadFn : afterRead" :max-count="maxCount" />
       </template>
     </van-field>
   </van-cell-group>
@@ -48,9 +36,13 @@ export default {
     afterRead: {
       type: Function,
       default() {
-        return () => {};
+        return () => { };
       },
     },
+    maxCount: {
+      type: Number,
+      default: 9999
+    }
   },
   computed: {
     uploader: {
@@ -76,7 +68,7 @@ export default {
           const { status, data } = res;
           if (status === 200) {
             if (data.code === 200) {
-              file.status = "success";
+              file.status = "done";
               file.url = data.data.fileUrl; // 这个地方需要注意，后面可能要改
             } else {
               file.status = "failed";
@@ -98,4 +90,5 @@ export default {
 </script>
 
 <style>
+
 </style>
