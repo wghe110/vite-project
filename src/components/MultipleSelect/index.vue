@@ -1,28 +1,12 @@
 <template>
   <div>
-    <van-field
-      is-link
-      input-align="right"
-      error-message-align="right"
-      :label="label"
-      @click="!disabled && showPopFn()"
-      :required="required"
-      v-bind="$attrs"
-      :disabled="disabled"
-      clearable
-    >
+    <van-field is-link input-align="right" error-message-align="right" :label="label" @click="!disabled && showPopFn()"
+      :required="required" v-bind="$attrs" :disabled="disabled" clearable>
       <template #input>
         <slot name="values" :slot-scope="value" v-if="value.length">
           <div class="tag-box">
-            <van-tag
-              type="primary"
-              color="#323233"
-              plain
-              v-for="tag in valueText"
-              class="checked-tag"
-              :key="tag"
-              >{{ tag }}</van-tag
-            >
+            <van-tag type="primary" color="#323233" plain v-for="tag in valueText" class="checked-tag" :key="tag">{{ tag
+            }}</van-tag>
           </div>
         </slot>
         <span class="empty" v-else>{{ placeholder }}</span>
@@ -35,36 +19,23 @@
       <slot></slot>
     </van-field>
 
-    <van-action-sheet
-      v-model="popVisible"
-      :title="label"
-      @cancel="cancelFn"
-      @click-overlay="cancelFn"
-      get-container="body"
-    >
+    <van-action-sheet v-model="popVisible" :title="label" @cancel="cancelFn" @click-overlay="cancelFn"
+      get-container="body">
       <div class="content" :style="{ height: `${contentHeight}px` }">
         <van-cell-group>
-          <van-cell
-            v-for="opt in options"
-            :key="opt.value"
-            :class="{ disabled: opt.disabled }"
-            @click="!opt.disabled && toggleChecke(opt)"
-          >
+          <van-cell v-for="opt in options" :key="opt.value" :class="{ disabled: opt.disabled }"
+            @click="!opt.disabled && toggleChecke(opt)">
             <!-- title -->
             <template #title>
               <span v-if="isChecked(opt)" :style="{ color: checkedColor }">{{
-                opt.text
+              opt.text
               }}</span>
               <span v-else>{{ opt.text }}</span>
             </template>
 
             <!-- icon-checked -->
             <template #right-icon v-if="isChecked(opt)">
-              <van-icon
-                name="success"
-                :style="{ color: checkedColor }"
-                class="checked-icon"
-              />
+              <van-icon name="success" :style="{ color: checkedColor }" class="checked-icon" />
             </template>
           </van-cell>
         </van-cell-group>
@@ -179,14 +150,17 @@ export default {
 .empty {
   color: #ccc;
 }
+
 .content {
   overflow: auto;
 }
+
 .btn-box {
   padding: 10px;
   display: flex;
   border-top: 8px solid #f7f8fa;
-  > button + button {
+
+  >button+button {
     margin-left: 10px;
   }
 }
@@ -194,13 +168,16 @@ export default {
 .checked-tag {
   margin: 2px;
 }
+
 .checked-icon {
   display: flex;
   align-items: center;
 }
+
 .disabled {
   color: #c8c9cc;
 }
+
 ::v-deep {
   .van-field--error {
     .empty {
@@ -208,6 +185,7 @@ export default {
     }
   }
 }
+
 .tag-box {
   line-height: 1;
 }

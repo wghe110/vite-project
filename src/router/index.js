@@ -13,6 +13,10 @@ const router = new VueRouter({
         },
 
         {
+          path: '/field',
+          component: () => import('../views/field/index.vue')
+        },
+        {
           path: '/select',
           component: () => import('../views/select/index.vue')
         },

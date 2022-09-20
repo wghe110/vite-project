@@ -2,25 +2,13 @@
   <div class="wrap">
     <aside class="aside">
       <van-cell-group>
-        <van-cell
-          :class="{ menu: true, checked: item.path === activeMenu }"
-          v-for="item in menus"
-          :key="item.path"
-          @click="setIframeSrcFn(item)"
-          >{{ item.name }}</van-cell
-        >
+        <van-cell :class="{ menu: true, checked: item.path === activeMenu }" v-for="item in menus" :key="item.path"
+          @click="setIframeSrcFn(item)">{{ item.name }}</van-cell>
       </van-cell-group>
     </aside>
 
     <section class="content">
-      <iframe
-        :src="activeMenu"
-        frameborder="0"
-        width="375"
-        height="667"
-        class="views"
-        ref="iframeRef"
-      ></iframe>
+      <iframe :src="activeMenu" frameborder="0" width="375" height="667" class="views" ref="iframeRef"></iframe>
     </section>
   </div>
 </template>
@@ -30,8 +18,12 @@ export default {
   components: {},
   data() {
     return {
-      activeMenu: "/#/select",
+      activeMenu: "/#/field",
       menus: [
+        {
+          name: "field 输入框",
+          path: "/#/field",
+        },
         {
           name: "select 下拉框",
           path: "/#/select",
@@ -105,23 +97,28 @@ export default {
   padding: 30px 0;
   box-sizing: border-box;
 }
+
 .wrap {
   height: 100vh;
   background-color: #f7f8fa;
   display: flex;
   overflow: auto;
 }
+
 .content {
   padding: 30px;
   flex: 1;
   min-width: 0%;
   overflow: auto;
 }
+
 .views {
   box-shadow: #ebedf0 0 4px 12px;
 }
+
 .menu {
   cursor: pointer;
+
   &.checked {
     background-color: #f7f8fa;
     font-weight: bolder;
