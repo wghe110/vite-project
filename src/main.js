@@ -6,6 +6,8 @@ const pinia = createPinia()
 
 // normalize.css
 import 'normalize.css'
+// common styles
+import '@/style.css'
 
 // 全局组件/指令/属性或方法
 import globalPlugins from './components/index'

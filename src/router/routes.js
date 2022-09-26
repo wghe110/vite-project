@@ -9,7 +9,7 @@ export default [
       },
       {
         path: '/home',
-        component: () => import('@/views/layout/home.vue')
+        component: () => import('@/views/home/index.vue')
       },
     ]
   },
