@@ -1,19 +1,15 @@
 export default [
   {
     path: '/',
-    component: () => import('@/views/layout/home.vue'),
+    redirect: '/loading',
     children: [
       {
-        path: '/jsx',
-        component: () => import('@/views/layout/jsx/index.vue')
+        path: '/loading',
+        component: () => import('@/views/layout/loading/index.vue')
       },
       {
-        path: '/demo',
-        component: () => import('@/views/demo/index.vue')
-      },
-      {
-        path: '/path',
-        component: () => import('@/views/path/index.vue')
+        path: '/home',
+        component: () => import('@/views/layout/home.vue')
       },
     ]
   },
