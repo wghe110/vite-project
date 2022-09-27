@@ -57,11 +57,11 @@ export default {
       initChart();
 
       window.addEventListener("resize", resetFn);
-      myChart.addEventListener('click', clickFn)
+      myChart.on('click', clickFn)
     });
     onBeforeUnmount(() => {
       window.removeEventListener("resize", resetFn);
-      window.removeEventListener("click", clickFn);
+      myChart.off("click", clickFn);
     });
 
     return {
