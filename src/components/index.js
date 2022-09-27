@@ -1,4 +1,5 @@
 import Echarts from './Echarts/index.vue'
+import NumberAnimation from './NumberAnimation/index.vue'
 
 export default {
   install: (app, options) => {
@@ -8,5 +9,6 @@ export default {
      * 3. 向 app.config.globalProperties 中添加一些全局实例属性或方法
      */
     app.component('chart', Echarts)
+    app.component('number-animation', NumberAnimation)
   }
 }

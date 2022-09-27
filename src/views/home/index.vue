@@ -32,8 +32,10 @@
     </section>
     <section class="col col-item">
       <div class="row row-1">
-        <h2>分隔数字</h2>
-        <div class="content-box">1</div>
+        <h2>数字动画</h2>
+        <div class="content-box">
+          <number-demo></number-demo>
+        </div>
       </div>
       <div class="row row-2"></div>
     </section>
@@ -58,6 +60,7 @@
 <script setup>
 import FontFace from '../demo/font-face.vue'
 import IconFont from '../demo/icon-font.vue'
+import NumberDemo from '../demo/number-animation.vue'
 </script>
 
 <style lang="scss" scoped>
