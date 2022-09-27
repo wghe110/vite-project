@@ -40,11 +40,15 @@
     <section class="col col-item">
       <div class="row row-1">
         <h2>特殊字体</h2>
-        <div class="content-box">1</div>
+        <div class="content-box">
+          <font-face></font-face>
+        </div>
       </div>
       <div class="row row-1">
         <h2>字体图标</h2>
-        <div class="content-box">1</div>
+        <div class="content-box">
+          <icon-font></icon-font>
+        </div>
       </div>
       <div class="row row-1"></div>
     </section>
@@ -52,6 +56,8 @@
 </template>
 
 <script setup>
+import FontFace from '../demo/font-face.vue'
+import IconFont from '../demo/icon-font.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -106,6 +112,7 @@
     color: #fff;
     margin: 0 0 24px;
     font-size: 20px;
+    font-family: 'pingFang';
   }
 
   >.chart-box,

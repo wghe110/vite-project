@@ -1,0 +1,20 @@
+@import './assets/icon-font/iconfont.css';
+
+body {
+  overflow: auto;
+}
+
+#app {
+  width: 1920px;
+  height: 1080px;
+}
+
+@font-face {
+  font-family: 'Dio';
+  src: url('@/assets/preload/font/庞门正道标题体.ttf')
+}
+
+@font-face {
+  font-family: 'pingFang';
+  src: url('@/assets/preload/font/pingFang.ttf')
+}
