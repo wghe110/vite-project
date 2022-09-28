@@ -21,7 +21,9 @@
     <section class="col col-item">
       <div class="row row-1">
         <h2>视频</h2>
-        <div class="video-box">1</div>
+        <div class="video-box">
+          <video-item></video-item>
+        </div>
       </div>
       <div class="row row-2">
         <h2>自动滚动</h2>
@@ -56,7 +58,12 @@
           <icon-font></icon-font>
         </div>
       </div>
-      <div class="row row-1"></div>
+      <div class="row row-1">
+        <h2>流媒体视频</h2>
+        <div class="video-box">
+          <video-stream></video-stream>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -67,6 +74,8 @@ import IconFont from '../demo/icon-font.vue'
 import NumberDemo from '../demo/number-animation.vue'
 import ChartBar from '../demo/echarts-bar-3d.vue'
 import ChartPie from '../demo/echarts-pie-3d.vue'
+import VideoItem from '../demo/video.vue'
+import VideoStream from '../demo/stream-video.vue'
 
 const clickBar = (params) => {
   console.log(params)
