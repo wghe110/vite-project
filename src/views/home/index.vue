@@ -9,7 +9,9 @@
       </div>
       <div class="row row-1">
         <h2>饼状图</h2>
-        <div class="chart-box">1</div>
+        <div class="chart-box">
+          <chart-pie></chart-pie>
+        </div>
       </div>
       <div class="row row-1">
         <h2>折线图</h2>
@@ -64,6 +66,7 @@ import FontFace from '../demo/font-face.vue'
 import IconFont from '../demo/icon-font.vue'
 import NumberDemo from '../demo/number-animation.vue'
 import ChartBar from '../demo/echarts-bar-3d.vue'
+import ChartPie from '../demo/echarts-pie-3d.vue'
 
 const clickBar = (params) => {
   console.log(params)

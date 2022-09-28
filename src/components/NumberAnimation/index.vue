@@ -1,10 +1,12 @@
 <template>
-  <number ref="numberRef" :from="from" :to="to" :duration="duration" :delay="delay" :easing="easing"
+  <number-com ref="numberRef" :from="from" :to="to" :duration="duration" :delay="delay" :easing="easing"
     :format="formatFn" />
 </template>
 
 <script setup>
 import { ref, nextTick, watch } from 'vue';
+import NumberCom from 'vue-number-animation/Number.vue'
+
 // props
 const props = defineProps({
   modelValue: {
@@ -17,7 +19,7 @@ const props = defineProps({
   },
   delay: {
     type: Number,
-    default: 1
+    default: 0
   },
   easing: {
     type: String,
