@@ -8,17 +8,22 @@
       </view>
 
       <view class="textarea-box" v-if="type === 'textarea'">
-        <textarea class="textarea" v-model="val" :placeholder="placeholder" :rows="rows" :maxlength="maxlength || 10000"
-          placeholder-class="c-input-placeholder" :style="`overflow-y: auto; height: ${height}`"></textarea>
+        <label class="textarea-out">
+          <textarea class="textarea" v-model="val" :placeholder="placeholder" :maxlength="maxlength || 10000"
+            placeholder-class="c-input-placeholder" :style="`overflow-y: auto; height: ${height}`"
+            :auto-height="autoHeight"></textarea>
+        </label>
         <view class="limit" v-if="showLimitNum && maxlength">{{ val.length }}/{{ maxlength }}</view>
+        <view class="readonly" v-if="readonly"></view>
       </view>
 
       <view class="input-box" v-else>
         <input type="text" v-model="val" class="input" placeholder-class="c-input-placeholder"
-          :maxlength="maxlength || 10000" :placeholder="placeholder" selection-start="-1" selection-end="-1"
-          cursor="-1">
+          :maxlength="maxlength || 10000" :placeholder="placeholder" selection-start="-1" :controlled="true"
+          selection-end="-1" cursor="-1">
 
         <view class="limit" v-if="showLimitNum && maxlength">{{ val.length }}/{{ maxlength }}</view>
+        <view class="readonly" v-if="readonly"></view>
       </view>
     </view>
     <slot name="suf"></slot>
@@ -57,19 +62,23 @@ const props = defineProps({
     type: String,
     default: 'text'
   },
-  rows: {
-    type: Number,
-    default: 3,
-  },
   maxlength: {
     type: [Number, String],
     default: '-1'
   },
   height: {
     type: String,
-    default: ''
+    default: '150px'
   },
   showLimitNum: {
+    type: Boolean,
+    default: false,
+  },
+  autoHeight: {
+    type: Boolean,
+    default: false,
+  },
+  readonly: {
     type: Boolean,
     default: false,
   }
@@ -135,6 +144,7 @@ const val = computed({
       flex: 1;
       min-width: 0%;
       display: flex;
+      position: relative;
 
       >.input {
         line-height: 60rpx;
@@ -143,6 +153,15 @@ const val = computed({
         font-size: 30rpx;
         color: #666;
         flex: 1;
+      }
+
+      >.readonly {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
       }
 
 
@@ -159,11 +178,30 @@ const val = computed({
     >.textarea-box {
       flex: 1;
       min-width: 0%;
+      position: relative;
 
-      >.textarea {
-        font-size: 30rpx;
-        color: #666;
-        width: 100%;
+      >.textarea-out {
+        min-height: 60rpx;
+        display: flex;
+        align-items: center;
+
+        >.textarea {
+          flex: 1;
+          font-size: 30rpx;
+          color: #666;
+          width: 100%;
+          position: relative;
+          top: -4rpx;
+        }
+      }
+
+      >.readonly {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
       }
 
       >.limit {
