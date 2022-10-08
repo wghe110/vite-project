@@ -1,6 +1,7 @@
 import Echarts from './Echarts/index.vue'
 import NumberAnimation from './NumberAnimation/index.vue'
 import VideoPlayer from './VideoPlayer/index.vue'
+import SeamlessScroll from './SeamlessScroll/index.vue'
 
 export default {
   install: (app, options) => {
@@ -12,5 +13,6 @@ export default {
     app.component('chart', Echarts)
     app.component('number-animation', NumberAnimation)
     app.component('video-player', VideoPlayer)
+    app.component('seamless-scroll', SeamlessScroll)
   }
 }

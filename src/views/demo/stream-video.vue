@@ -8,7 +8,7 @@ const options = {
   autoplay: true,
   controls: true,
   width: 290,
-  height: 306,
+  height: 299,
   sources: [
     {
       src: 'http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8',

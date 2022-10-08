@@ -2,20 +2,20 @@
   <div class="wrap">
     <section class="col col-item">
       <div class="row row-1">
-        <h2>柱状图</h2>
+        <h2>3d单柱状图</h2>
         <div class="chart-box">
           <chart-bar @click="clickBar"></chart-bar>
         </div>
       </div>
       <div class="row row-1">
-        <h2>饼状图</h2>
-        <div class="chart-box">
-          <chart-pie></chart-pie>
-        </div>
+        <h2>多3d柱状图</h2>
+        <div class="chart-box">1</div>
       </div>
       <div class="row row-1">
-        <h2>折线图</h2>
-        <div class="chart-box">1</div>
+        <h2>堆叠3d柱状图</h2>
+        <div class="chart-box">
+          1
+        </div>
       </div>
     </section>
     <section class="col col-item">
@@ -25,9 +25,17 @@
           <video-item></video-item>
         </div>
       </div>
-      <div class="row row-2">
-        <h2>自动滚动</h2>
-        <div class="content-box">1</div>
+      <div class="row row-1">
+        <h2>流媒体</h2>
+        <div class="content-box">
+          <!-- <video-stream></video-stream> -->
+        </div>
+      </div>
+      <div class="row row-1">
+        <h2>3d饼状图</h2>
+        <div class="content-box">
+          <chart-pie></chart-pie>
+        </div>
       </div>
     </section>
     <section class="col flex-1" style="margin: 0 20px">
@@ -38,12 +46,20 @@
     </section>
     <section class="col col-item">
       <div class="row row-1">
-        <h2>数字动画</h2>
+        <h2>无缝滚动</h2>
         <div class="content-box">
-          <number-demo></number-demo>
+          <div class="scroll-out">
+            <demo-seamless></demo-seamless>
+          </div>
         </div>
       </div>
-      <div class="row row-2"></div>
+      <div class="row row-1">
+        <h2>定距离滚动</h2>
+        <div class="content-box">
+          1
+        </div>
+      </div>
+      <div class="row row-1"></div>
     </section>
     <section class="col col-item">
       <div class="row row-1">
@@ -59,9 +75,9 @@
         </div>
       </div>
       <div class="row row-1">
-        <h2>流媒体视频</h2>
+        <h2>数字动画</h2>
         <div class="video-box">
-          <video-stream></video-stream>
+          <number-demo></number-demo>
         </div>
       </div>
     </section>
@@ -76,6 +92,7 @@ import ChartBar from '../demo/echarts-bar-3d.vue'
 import ChartPie from '../demo/echarts-pie-3d.vue'
 import VideoItem from '../demo/video.vue'
 import VideoStream from '../demo/stream-video.vue'
+import DemoSeamless from '../demo/seamless-scroll.vue'
 
 const clickBar = (params) => {
   console.log(params)
@@ -143,5 +160,9 @@ const clickBar = (params) => {
     flex: 1;
     min-height: 0%;
   }
+}
+
+.scroll-out {
+  height: 100%;
 }
 </style>

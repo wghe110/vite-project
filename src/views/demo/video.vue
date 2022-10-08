@@ -10,7 +10,7 @@ const options = {
   autoplay: true,
   controls: true,
   width: 290,
-  height: 306,
+  height: 299,
   poster,
   sources: [
     {
