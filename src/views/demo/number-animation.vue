@@ -14,16 +14,18 @@
   <div class="number">
     <number-animation v-model="val" :precision="3" :duration="8" :delay="2" en-us></number-animation>
   </div>
+
+  <button @click="changeNum">改变数字</button>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 const val = ref(0)
 
-setInterval(() => {
+const changeNum = () => {
   val.value = Math.random() * 10000000
   console.log('change', val.value)
-}, 12000);
+}
 </script>
 
 <style lang="scss" scoped>
