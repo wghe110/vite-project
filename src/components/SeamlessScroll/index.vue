@@ -1,5 +1,5 @@
 <template>
-  <div class="seamless-scroll" ref="wrapRef" @click="playFn">
+  <div class="seamless-scroll" ref="wrapRef" @mouseenter="timer && pauseFn()" @mouseleave="isPaused && playFn()">
     <div class="scroll" ref="scrollRef" :style="{transform: `translateY(${-len}px)`}">
       <section class="content" ref="contentRef">
         <slot></slot>
@@ -18,48 +18,80 @@ import { ref, onMounted } from 'vue'
 const props = defineProps({
   step: {
     type: Number,
-    default: 4
+    default: 2
+  },
+  autoScroll: {
+    type: Boolean,
+    default: false
   }
 })
 
 const wrapRef = ref()
-const scrollRef = ref()
 const contentRef = ref()
 const canMove = ref(false)
 const len = ref(0)
-let timer;
+const timer = ref();
+const isPaused = ref(false)
 
-const initFn = () => {
+const checkCanMoveFn = () => {
   const h_wrap = wrapRef.value.clientHeight
   const h_content = contentRef.value.clientHeight
   canMove.value = h_content > h_wrap
 }
 
 const moveFn = () => {
-  initFn()
   len.value += props.step / 2
-  timer = requestAnimationFrame(moveFn)
-  checkFn()
 }
 
-const checkFn = () => {
+const checkMoveEndFn = () => {
   const h_content = contentRef.value.clientHeight
   if (len.value >= h_content) len.value = 0
 }
 
-const playFn = () => {
+const processFn = () => {
+  checkCanMoveFn()
   if (!canMove.value) return;
+  moveFn()
+  checkMoveEndFn()
+  timer.value = requestAnimationFrame(processFn)
+}
 
-  pauseFn()
-  timer = requestAnimationFrame(moveFn)
+
+const playFn = () => {
+  if (timer.value) pauseFn()
+
+  processFn()
 }
 const pauseFn = () => {
-  if (timer) cancelAnimationFrame(timer)
+  if (timer.value) {
+    isPaused.value = true
+    cancelAnimationFrame(timer.value)
+  } else {
+    isPaused.value = false
+  }
+
+  timer.value = null
+}
+
+const cancelFn = () => {
+  if (timer.value) {
+    cancelAnimationFrame(timer.value)
+    timer.value = null
+    isPaused.value = false
+  }
+
 }
 
 // life
 onMounted(() => {
+  if (props.autoScroll) playFn()
+})
 
+// export
+defineExpose({
+  playFn,
+  pauseFn,
+  cancelFn
 })
 </script>
 
