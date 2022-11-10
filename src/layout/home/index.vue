@@ -20,7 +20,7 @@ import { mapState } from "pinia";
 import globalStore from '@/store/global'
 
 import CHeader from './CHeader.vue'
-import CAside from './CAside.vue'
+import CAside from '../aside/index.vue'
 import NavTab from './NavTab.vue'
 
 import initHeaderAndAside from '@/preload/isShowMenu'

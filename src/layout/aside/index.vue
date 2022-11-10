@@ -4,14 +4,15 @@
 
     <section class="content">
       <el-scrollbar height="100%">
-        <menu-expand></menu-expand>
+        <menu-expand :options="mock"></menu-expand>
       </el-scrollbar>
     </section>
   </aside>
 </template>
 
 <script setup>
-import MenuExpand from '../components/MenuExpand.vue'
+import MenuExpand from './expand/index.vue'
+import mock from './mock.js'
 </script>
 
 <style lang="scss" scoped>
