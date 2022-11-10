@@ -48,7 +48,7 @@ export default {
       return true;
     } catch (error) {
       loading.hide();
-      return false;
+      return true;
     }
   },
   components: {

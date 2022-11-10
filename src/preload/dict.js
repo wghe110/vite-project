@@ -1,4 +1,4 @@
-import request from '@/apis/dict'
+import api from '@/apis/dict'
 import globalStore from '@/store/global'
 import { ElMessage } from 'element-plus'
 
@@ -8,7 +8,7 @@ const loadDicts = () => {
   const store = globalStore()
 
   return new Promise((resolve, reject) => {
-    request.listDict().then(res => {
+    api.listDict().then(res => {
       if (res && res.length) {
         res.forEach(item => {
           const { key, childList } = item
