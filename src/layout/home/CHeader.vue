@@ -1,10 +1,10 @@
 <template>
   <div class="wrap--header">
-    <img src="@public/logo.svg" alt="" class="pic--logo">
+    <img src="@p/logo.svg" alt="" class="pic--logo">
 
     <aside class="container--right">
       <section class="container--msg">
-        <img src="@public/msg-icon.svg" alt="" class="pic--msg">
+        <img src="@p/msg-icon.svg" alt="" class="pic--msg">
       </section>
 
       <section class="container--user">
@@ -34,7 +34,7 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { ArrowDown } from '@element-plus/icons-vue'
-import DefaultPic from '@public/default-pic.png'
+import DefaultPic from '@p/default-pic.png'
 import globalStore from '@/store/global'
 
 const user = ref({})
@@ -70,7 +70,7 @@ const menuChangeFn = (command) => {
   height: 72px;
   padding: 0 32px;
   background-color: #1162b3;
-  background-image: url('@public/head-bg.png');
+  background-image: url('@p/head-bg.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: left top;

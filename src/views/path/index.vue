@@ -1,8 +1,8 @@
 <template>
   <h1>img:/demo.jpeg</h1>
   <img src="/demo.jpeg" width="200" alt="">
-  <h1>img:@public/demo.jpeg</h1>
-  <img src="@public/demo.jpeg" width="200" alt="">
+  <h1>img:@p/demo.jpeg</h1>
+  <img src="@p/demo.jpeg" width="200" alt="">
   <h1>img:@/assets/demo.webp</h1>
   <img src="@/assets/demo.webp" width="200" alt="">
 
@@ -10,7 +10,7 @@
 
   <h1>css background-image:/demo.jpeg</h1>
   <div class="background-image a"></div>
-  <h1>css background-image:@public/demo.jpeg</h1>
+  <h1>css background-image:@p/demo.jpeg</h1>
   <div class="background-image b"></div>
   <h1>css background-image:@/assets/demo.webp</h1>
   <div class="background-image c"></div>
@@ -31,7 +31,7 @@
   }
 
   &.b {
-    background-image: url('@public/demo.jpeg');
+    background-image: url('@p/demo.jpeg');
   }
 
   &.c {

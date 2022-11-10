@@ -1,4 +1,4 @@
-import loadingSrc from '@public/loading.gif'
+import loadingSrc from '@p/loading.gif'
 
 // loading
 const createLoading = () => {
