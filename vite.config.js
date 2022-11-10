@@ -16,7 +16,9 @@ export default defineConfig({
   },
   server: {
     // 反向代理配置
-    proxy: {}
+    proxy: {
+      '/api': 'http://10.32.132.86:8080'
+    }
   },
   build: {
     outDir: 'dist',

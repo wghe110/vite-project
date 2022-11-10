@@ -1,7 +1,7 @@
 export default [
   {
     path: '/',
-    component: () => import('@/views/layout/home.vue'),
+    component: () => import('@/layout/home/index.vue'),
     children: [
       {
         path: '/jsx',
