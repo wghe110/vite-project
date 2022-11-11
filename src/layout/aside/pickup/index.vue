@@ -12,8 +12,8 @@
     </el-scrollbar>
 
     <!-- 弹出框 -->
-    <dialog-children :oleft="oleft" :otop="otop" :source="activeObj" :tit="activeObj.name" v-if="visible"
-      @mouseenter="enterPopFn" @mouseleave="hidePopFn" @select="selectFn">
+    <dialog-children :oleft="oleft" :otop="otop" :source="activeObj" :tit="activeObj.name" v-bind="$attrs"
+      v-if="visible" @mouseenter="enterPopFn" @mouseleave="hidePopFn" @select="selectFn">
     </dialog-children>
   </div>
 </template>

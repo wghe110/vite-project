@@ -16,7 +16,7 @@
             <ArrowRight />
           </el-icon>
         </li>
-        <li class="menu" v-else @click="checkFn(item)">
+        <li :class="`menu ${item.index === modelValue ? 'active' : ''}`" v-else @click="checkFn(item)">
           <div class="word">{{ item.name || '--' }}</div>
         </li>
       </template>
@@ -51,6 +51,10 @@ const props = defineProps({
     }
   },
   tit: {
+    type: String,
+    default: ''
+  },
+  modelValue: {
     type: String,
     default: ''
   }
@@ -159,7 +163,16 @@ const checkFn = (item) => {
     }
 
     &.menu {
+      &.active {
+        >.word {
+          background-color: #36A4FF;
+          color: #fff;
+        }
+      }
+
       >.word {
+        height: 100%;
+        flex: 1;
         padding: 0 12px 0 20px;
         white-space: nowrap;
         overflow: hidden;
@@ -167,6 +180,8 @@ const checkFn = (item) => {
         font-weight: normal;
         color: #4b4b4b;
         font-size: 14px;
+        display: flex;
+        align-items: center;
       }
     }
   }

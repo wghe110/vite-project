@@ -1,11 +1,12 @@
 <template>
   <aside class="wrap--aside">
-    <section class="container--worktable"> </section>
+    <section class="container--worktable" @click="collapse = !collapse"> </section>
 
     <section class="content">
-      <!-- <menu-expand :options="mock" :expand="aExpand" v-model="val" @select="selectFn" @toggleExpand="toggleExpandFn">
-        </menu-expand> -->
-      <menu-pickup :options="mock" v-model="val" @select="selectFn"></menu-pickup>
+      <menu-expand v-if="!collapse" :options="mock" :expand="aExpand" v-model="val" @select="selectFn"
+        @toggleExpand="toggleExpandFn">
+      </menu-expand>
+      <menu-pickup v-else :options="mock" v-model="val" @select="selectFn"></menu-pickup>
     </section>
   </aside>
 </template>
@@ -20,6 +21,7 @@ const emit = defineEmits(['select', 'close', 'open'])
 
 const val = ref('')
 const aExpand = ref([])
+const collapse = ref(false)
 
 const selectFn = (obj) => {
   val.value = obj.index
