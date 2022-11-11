@@ -1,7 +1,7 @@
 <template>
   <aside class="wrap--aside">
     <section class="container--worktable"> </section>
-    {{ val }}
+
     <section class="content">
       <!-- <menu-expand :options="mock" :expand="aExpand" v-model="val" @select="selectFn" @toggleExpand="toggleExpandFn">
         </menu-expand> -->

@@ -6,7 +6,7 @@
           @mouseleave="hidePopFn"></Menu>
 
         <el-tooltip v-else :content="item.name" placement="right" effect="light">
-          <Menu :source="item" v-bind="$attrs"></Menu>
+          <Menu :source="item" v-bind="$attrs" @select="selectFn"></Menu>
         </el-tooltip>
       </template>
     </el-scrollbar>
@@ -31,7 +31,7 @@ const props = defineProps({
     }
   },
 })
-const emit = defineEmits('select')
+const emit = defineEmits(['select'])
 
 const oleft = ref(0)
 const otop = ref(0)
@@ -60,8 +60,10 @@ const enterPopFn = () => {
   clearTimeout(timer)
 }
 const selectFn = (item) => {
+  visible.value = false
   emit('select', item)
 }
+
 </script>
 
 <style lang="scss" scoped>

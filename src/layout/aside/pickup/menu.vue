@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap--menu active" @click="checkFn">
+  <div :class="`wrap--menu ${isActive && 'active'}`" @click="checkFn">
     <div class="content">
       <img src="@/assets/key-person.svg" alt="" class="pic" />
     </div>
@@ -21,7 +21,23 @@ const props = defineProps({
     default: ''
   }
 })
-const emit = defineEmits('select')
+const emit = defineEmits(['select'])
+
+const getIdx = (arr, target = []) => {
+  arr.forEach(item => {
+    const { index, children = [] } = item
+    target.push(index)
+    if (children && children.length) getIdx(children, target)
+  })
+
+  return target
+}
+const patIndex = computed(() => {
+  return getIdx([props.source])
+})
+const isActive = computed(() => {
+  return patIndex.value.includes(props.modelValue)
+})
 
 const checkFn = () => {
   const { type } = props.source

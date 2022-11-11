@@ -25,7 +25,7 @@
     </ul>
 
     <dialog-children v-if="visible" :source="subSource" :oleft="subLeft" :otop="subTop" @mouseenter="enterPopFn"
-      @mouseleave="hidePopFn">
+      @mouseleave="hidePopFn" @select="checkFn">
     </dialog-children>
   </div>
 </template>
