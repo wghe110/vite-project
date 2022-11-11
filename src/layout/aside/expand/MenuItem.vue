@@ -1,23 +1,33 @@
 <template>
-  <div class="wrap--menu active">
+  <li :class="`wrap--menu ${modelValue === source.index && 'active'}`" @click="checkMenuFn">
     <div class="container">
       <img src="@/assets/key-person.svg" alt="" class="icon">
       <span class="word">{{ source.name || '--' }}</span>
       <div class="square"></div>
       <div class="line"></div>
     </div>
-  </div>
+  </li>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   source: {
     type: Object,
     default() {
       return {}
     }
+  },
+  modelValue: {
+    type: String,
+    default: ''
   }
 })
+const emit = defineEmits(['select'])
+
+const checkMenuFn = () => {
+  if (props.modelValue === props.source.index) return
+  emit('select', props.source)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -76,9 +86,10 @@ defineProps({
     position: relative;
 
     >.icon {
-      position: absolute;
+      // position: absolute;
       width: 16px;
       height: 16px;
+      margin-right: 8px;
     }
 
     >.word {
@@ -87,7 +98,6 @@ defineProps({
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-left: 24px;
       margin-right: 14px;
 
       font-family: PingFangSC-Regular;

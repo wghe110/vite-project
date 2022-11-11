@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap--submenu expand">
-    <div class="tit">
+  <li :class="`wrap--submenu ${isExpand && 'expand'}`">
+    <div class="tit" @click="toggleExpandFn">
       <div class="container">
         <img src="@/assets/key-person.svg" alt="" class="icon">
         <span class="word">{{ source.name || '--' }}</span>
@@ -14,19 +14,37 @@
     <div class="content">
       <slot></slot>
     </div>
-  </div>
+  </li>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
-defineProps({
+
+const props = defineProps({
   source: {
     type: Object,
     default() {
       return {}
     }
+  },
+  expand: {
+    type: Array,
+    default() {
+      return []
+    }
   }
 })
+const emit = defineEmits(['toggleExpand'])
+
+const isExpand = computed(() => {
+  const { expand, source: { index } } = props
+  return expand.includes(index)
+})
+
+const toggleExpandFn = () => {
+  emit('toggleExpand', props.source)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -39,7 +57,7 @@ defineProps({
     }
 
     >.content {
-      max-height: 2000px;
+      display: block;
     }
   }
 
@@ -67,9 +85,10 @@ defineProps({
       align-items: center;
 
       >.icon {
-        position: absolute;
+        // position: absolute;
         width: 16px;
         height: 16px;
+        margin-right: 8px;
       }
 
       >.word {
@@ -78,7 +97,6 @@ defineProps({
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin-left: 24px;
         margin-right: 14px;
 
         font-family: PingFangSC-Regular;
@@ -90,8 +108,29 @@ defineProps({
   }
 
   >.content {
-    overflow: hidden;
-    max-height: 0;
+    display: none;
+
+    :deep {
+      >.c-menu {
+        >.wrap--menu {
+          padding-left: 20px;
+        }
+
+        >.wrap--submenu {
+          >.tit {
+            padding-left: 40px;
+          }
+
+          >.content {
+            >.c-menu {
+              >.wrap--menu {
+                padding-left: 40px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>

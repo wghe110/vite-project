@@ -1,18 +1,41 @@
 <template>
   <aside class="wrap--aside">
     <section class="container--worktable"> </section>
-
+    {{ val }}
     <section class="content">
-      <el-scrollbar height="100%">
-        <menu-expand :options="mock"></menu-expand>
-      </el-scrollbar>
+      <!-- <menu-expand :options="mock" :expand="aExpand" v-model="val" @select="selectFn" @toggleExpand="toggleExpandFn">
+        </menu-expand> -->
+      <menu-pickup :options="mock" v-model="val" @select="selectFn"></menu-pickup>
     </section>
   </aside>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import MenuExpand from './expand/index.vue'
+import MenuPickup from './pickup/index.vue'
 import mock from './mock.js'
+
+const emit = defineEmits(['select', 'close', 'open'])
+
+const val = ref('')
+const aExpand = ref([])
+
+const selectFn = (obj) => {
+  val.value = obj.index
+  emit('select', obj)
+}
+const toggleExpandFn = (obj) => {
+  const { index } = obj
+  const idx = aExpand.value.findIndex(item => item === index)
+  if (idx !== -1) {
+    aExpand.value.splice(idx, 1)
+    emit('close', obj)
+  } else {
+    aExpand.value.push(index)
+    emit('open', obj)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
