@@ -14,5 +14,21 @@ import Menu from './menu.vue'
 .wrap--expand {
   width: 255px;
   height: 100%;
+
+  :deep {
+    .el-scrollbar__view {
+      >.c-menu {
+        >.wrap--submenu {
+          >.tit {
+            height: 64px;
+          }
+        }
+
+        >.wrap--menu {
+          height: 64px;
+        }
+      }
+    }
+  }
 }
 </style>

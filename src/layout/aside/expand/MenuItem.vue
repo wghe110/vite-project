@@ -51,13 +51,17 @@ const checkMenuFn = () => {
 
   &.active {
     &::before {
-      background-color: #E6EEFF;
+      background-color: #36A4FF;
     }
 
     >.container {
       >.square {
-        border-color: #36A4FF;
+        border-color: #fff;
         background: rgba(255, 255, 255, 0.30);
+      }
+
+      >.word {
+        color: #fff;
       }
 
       >.line {
@@ -67,7 +71,10 @@ const checkMenuFn = () => {
   }
 
   &:hover {
+    background-color: #E6EEFF;
+
     >.container {
+
       >.icon {
         opacity: 0.8;
       }

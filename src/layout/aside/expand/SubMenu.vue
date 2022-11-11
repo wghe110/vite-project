@@ -68,6 +68,8 @@ const toggleExpandFn = () => {
     cursor: pointer;
 
     &:hover {
+      background-color: #E6EEFF;
+
       >.container {
         >.icon {
           opacity: 0.8;

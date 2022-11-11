@@ -24,8 +24,8 @@
       <div class="empty" v-if="!source.children || source.children.length === 0">空</div>
     </ul>
 
-    <dialog-children v-if="visible" :source="subSource" :oleft="subLeft" :otop="subTop" @mouseenter="enterPopFn"
-      @mouseleave="hidePopFn" @select="checkFn">
+    <dialog-children v-if="visible" :source="subSource" :oleft="subLeft" :otop="subTop" :modelValue="modelValue"
+      v-bind="$attrs" @mouseenter="enterPopFn" @mouseleave="hidePopFn" @select="checkFn">
     </dialog-children>
   </div>
 </template>
