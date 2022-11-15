@@ -50,7 +50,7 @@ const toggleExpandFn = () => {
 <style lang="scss" scoped>
 .wrap--submenu {
   &.expand {
-    .container {
+    >.tit>.container {
       >.icon--arrow {
         transform: rotate(-180deg);
       }
