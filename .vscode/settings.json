@@ -37,7 +37,7 @@
     "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[vue]": {
-    "editor.defaultFormatter": "Vue.volar"
+    "editor.defaultFormatter": "octref.vetur"
   },
   // git配置
   "git.autofetch": true,

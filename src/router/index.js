@@ -4,29 +4,16 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: () => import('../views/layout/main.vue'),
-      children: [
-        {
-          path: '/store',
-          component: () => import('@/views/store/index.vue')
-        },
-        {
-          path: '/path',
-          component: () => import('@/views/path/index.vue')
-        },
-        {
-          path: '/jsx',
-          component: () => import('@/views/jsx/index.jsx')
-        }
-      ]
+      component: () => import('../views/home/index.vue'),
+      children: []
     },
     {
       path: '/login',
-      component: () => import('../views/layout/login.vue'),
+      component: () => import('../views/home/login/index.vue'),
     },
     {
       path: '*',
-      component: () => import('../views/layout/404.vue'),
+      component: () => import('../views/home/404.vue'),
     },
   ]
 })
