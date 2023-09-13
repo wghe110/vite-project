@@ -2,7 +2,11 @@
   <div class="wrap-login">
     <section class="content" @keydown.enter="submitFn">
       <aside class="alert">
-        <el-alert :title="alert.title" :type="alert.type" effect="dark" />
+        <Alert
+          :title="alert.title"
+          :type="alert.type"
+          :visible.sync="alert.visible"
+        />
       </aside>
 
       <div>
@@ -77,7 +81,7 @@
               type="primary"
               class="btn-submit"
               :loading="loading"
-              @click="!loading && submitFn()"
+              @click="!isSuccess && !loading && submitFn()"
               >登 录</el-button
             >
           </el-form-item>
@@ -99,8 +103,12 @@ import api from "@/apis/login";
 import { encryptPassword } from "@/utils/tool";
 import { formatLockedTime } from "./utils";
 import rules from "./rules";
+import Alert from "./Alert.vue";
 
 export default {
+  components: {
+    Alert,
+  },
   data() {
     return {
       form: {
@@ -121,7 +129,9 @@ export default {
       alert: {
         type: "error",
         title: "--",
+        visible: false,
       },
+      isSuccess: false,
     };
   },
   created() {
@@ -134,7 +144,9 @@ export default {
         .getCode()
         .then((res) => {
           if (!res || Object.keys(res).length === 0)
-            return this.$message.error("获取验证码失败");
+            return this.customerAlertFn({
+              message: `获取验证码失败`,
+            });
 
           this.code.key = Object.keys(res)[0];
           this.code.url = Object.values(res)[0];
@@ -154,43 +166,66 @@ export default {
       const headers = this.getHeadersFn();
       const params = this.getParamsFn();
 
+      this.loading = true;
       api
         .login(params, headers)
-        .then((res) => {
-          console.log("res", res);
-        })
-        .catch((err) => {
-          console.log("err", err);
-          const { status } = err;
-
-          if (status === 401) {
-            if (err.data.attempts) {
-              return this.$Message.error(
-                `登录失败，您还有 ${err.data.attempts} 尝试机会！`
-              );
-            }
-
-            const locktime = formatLockedTime(err.data.lockoutTime);
-            this.$Message.error({
-              content: `登录失败，您的账号已被锁定，请在<span style="font-weight: bold; color: #2d8cf0;">${locktime}</span>后重试！`,
-            });
-          }
-
-          if (err.data && err.data.title) {
-            if (err.data.message === "captcha.validate.failed") {
-              return this.customerAlertFn({
-                message: "验证码错误",
-              });
-              // return this.$Message.error("验证码错误");
-            }
-            if (err.data.message === "captcha.missing") {
-              return this.$Message.error("验证码失效");
-            }
-            return this.$Message.error(err.data.title);
-          }
-
-          this.$Message.error(`登录失败，用户名或密码错误！`);
+        .then(this.loginSucFn)
+        .catch(this.loginFailFn)
+        .finally(() => {
+          this.loading = false;
         });
+    },
+    loginSucFn(res) {
+      this.isSuccess = true;
+
+      const { token } = res;
+      localStorage.setItem("token", token);
+
+      this.customerAlertFn({
+        type: "success",
+        message: `登录成功`,
+      });
+      setTimeout(() => {
+        this.$router.replace("/welcome");
+      }, 2000);
+    },
+    loginFailFn(err) {
+      this.getCodeFn();
+
+      const { status } = err;
+
+      if (status === 401) {
+        if (err.data.attempts) {
+          return this.customerAlertFn({
+            message: `登录失败，您还有 ${err.data.attempts} 尝试机会！`,
+          });
+        }
+
+        const locktime = formatLockedTime(err.data.lockoutTime);
+        this.customerAlertFn({
+          message: `登录失败，您的账号已被锁定，请在 ${locktime} 后重试！`,
+        });
+      }
+
+      if (err.data && err.data.title) {
+        if (err.data.message === "captcha.validate.failed") {
+          return this.customerAlertFn({
+            message: "验证码错误",
+          });
+        }
+        if (err.data.message === "captcha.missing") {
+          return this.customerAlertFn({
+            message: "验证码失效",
+          });
+        }
+        return this.customerAlertFn({
+          message: err.data.title,
+        });
+      }
+
+      this.customerAlertFn({
+        message: "登录失败，用户名或密码错误！",
+      });
     },
     getHeadersFn() {
       const {
@@ -221,6 +256,7 @@ export default {
     customerAlertFn({ type = "error", message = "--" }) {
       this.alert.title = message;
       this.alert.type = type;
+      this.alert.visible = true;
     },
   },
 };
