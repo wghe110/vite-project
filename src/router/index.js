@@ -5,7 +5,12 @@ const router = new VueRouter({
     {
       path: '/',
       component: () => import('../views/home/index.vue'),
-      children: []
+      children: [
+        {
+          path: '/welcome',
+          component: () => import('../views/welcome/index.vue'),
+        },
+      ]
     },
     {
       path: '/login',

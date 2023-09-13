@@ -26,6 +26,7 @@
 - 滚动条：[el-scrollbar](https://blog.csdn.net/qq_40323256/article/details/117473751)
 - 地图：[高德地图](https://lbs.amap.com/api/javascript-api-v2/summary/)
 - UI：[elementUI 2.15.14](https://element.eleme.cn/#/zh-CN/component/installation)
+- 加密：[jsencrypt](http://travistidwell.com/jsencrypt/)
 
 ## 样式
 

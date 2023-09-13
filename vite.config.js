@@ -4,8 +4,7 @@ import vueJsx from '@vitejs/plugin-vue2-jsx'
 export default {
   resolve: {
     alias: {
-      '@': '/src',
-      '@public': '/public'
+      '@': '/src'
     },
   },
   plugins: [
@@ -14,7 +13,9 @@ export default {
   ],
   server: {
     // 反向代理配置
-    proxy: {}
+    proxy: {
+      '/api': 'http://udp6hx.devops.com'
+    }
   },
   build: {
     outDir: 'dist',

@@ -61,18 +61,10 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  > .header {
-    height: 64px;
-    background-color: #ccc;
-  }
   > .content {
     flex: 1;
     min-height: 400px;
     display: flex;
-    > .aside {
-      width: 240px;
-      background-color: #999;
-    }
     > .inner-content {
       flex: 1;
       min-width: 500px;
