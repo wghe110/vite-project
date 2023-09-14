@@ -1,4 +1,4 @@
-import { createVuePlugin } from 'vite-plugin-vue2'
+import vue from '@vitejs/plugin-vue2'
 import vueJsx from '@vitejs/plugin-vue2-jsx'
 
 export default {
@@ -9,7 +9,7 @@ export default {
     },
   },
   plugins: [
-    createVuePlugin(),
+    vue(),
     vueJsx()
   ],
   server: {
