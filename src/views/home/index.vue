@@ -1,9 +1,9 @@
 <template>
   <div class="wrap">
-    <ComHeader v-if="showHeader" />
+    <ComAside v-if="showAside" :collapse="collapse" />
 
     <div class="content">
-      <ComAside v-if="showAside" />
+      <ComHeader v-if="showHeader" :collapse.sync="collapse" />
 
       <div class="inner-content">
         <router-view></router-view>
@@ -31,7 +31,9 @@ export default {
     ComAside,
   },
   data() {
-    return {};
+    return {
+      collapse: false,
+    };
   },
   beforeRouteEnter(to, from, next) {
     // 判断是否隐藏头部和左侧菜单
@@ -60,11 +62,12 @@ export default {
 .wrap {
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  background: #f0f2f5;
   > .content {
     flex: 1;
     min-height: 400px;
     display: flex;
+    flex-direction: column;
     > .inner-content {
       flex: 1;
       min-width: 500px;
