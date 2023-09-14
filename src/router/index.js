@@ -17,6 +17,10 @@ const router = new VueRouter({
       component: () => import('../views/home/login/index.vue'),
     },
     {
+      path: '/change-pwd',
+      component: () => import('../views/home/change-pwd.vue'),
+    },
+    {
       path: '*',
       component: () => import('../views/home/404.vue'),
     },

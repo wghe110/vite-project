@@ -19,13 +19,13 @@ import 'normalize.css'
 import GlobalComponents from './components/index'
 Vue.use(GlobalComponents)
 
-import ViewUI from 'view-design';
-import 'view-design/dist/styles/iview.css';
-Vue.use(ViewUI)
+// import ViewUI from 'view-design';
+// import 'view-design/dist/styles/iview.css';
+// Vue.use(ViewUI)
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
+Vue.use(ElementUI, { size: 'small' });
 
 new Vue({
   render: h => h(App),
