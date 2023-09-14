@@ -6,6 +6,7 @@
         active-text-color="#fff"
         :unique-opened="true"
         :collapse="collapse"
+        :collapse-transition="false"
       >
         <el-submenu index="1">
           <template slot="title">
