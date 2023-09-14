@@ -66,8 +66,8 @@ export default {
   data() {
     return {
       form: {
-        userName: "admin",
-        tenantAccount: "default",
+        userName: "",
+        tenantAccount: "",
         newPassword: "",
         oldPassword: "",
       },
@@ -110,7 +110,7 @@ export default {
             this.isSuccessed = true;
 
             localStorage.setItem("token", token);
-            this.$Message.success({
+            return this.$Message.success({
               content: "修改密码成功！",
               onClose: () => {
                 this.$router.replace("/welcome");
@@ -131,6 +131,8 @@ export default {
     },
     cancelFn() {
       this.$router.replace("/welcome");
+      this.form.userName = localStorage.getItem("userName");
+      this.form.tenantAccount = localStorage.getItem("tenantAccount");
     },
     getRuleFn() {
       api.getPwdRule().then((res) => {

@@ -176,6 +176,28 @@ export default {
         });
     },
     loginSucFn(res) {
+      const { userName, tenantAccount } = this.form;
+      localStorage.setItem("userName", userName);
+      localStorage.setItem("tenantAccount", tenantAccount);
+
+      const { validatePaswd } = this.$route.meta;
+      const { passwordStatus } = res;
+
+      if (validatePaswd && passwordStatus) {
+        const msg =
+          passwordStatus === 1
+            ? "初始密码强度较弱，请修改后再重新登录！"
+            : "密码已使用3个月，请修改后再重新登录！";
+
+        return this.$alert(msg, "修改密码", {
+          confirmButtonText: "确定",
+          showClose: false,
+          callback: () => {
+            this.$router.replace("/change-pwd");
+          },
+        });
+      }
+
       this.isSuccess = true;
 
       const { token } = res;
