@@ -18,6 +18,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI, { size: 'small' });
 
+import 'view-design/dist/styles/iview.css';
+
 new Vue({
   render: h => h(App),
   router,

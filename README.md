@@ -8,7 +8,7 @@
     vite + vue2 + elementUI
   ```
 
-*里面会有iview的组件，后面有时间会逐一替代成elementUI*
+*里面会有iview的组件，后面有时间会逐一替代成elementUI,由于图标问题，可能会按需加载*
 
 ## 集成
 

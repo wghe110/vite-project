@@ -7,5 +7,11 @@ export default {
   },
   setShowAside(state, val) {
     state.showAside = val;
+  },
+  setMenus(state, val) {
+    state.menus = val
+  },
+  setMenuList(state, val) {
+    state.menuList = val
   }
 }

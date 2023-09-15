@@ -12,7 +12,9 @@ const store = new Vuex.Store({
   state: {
     showHeader: true,
     showAside: true,
-    global: 1
+    global: 1,
+    menuList: [],
+    menus: []
   },
   getters,
   mutations,
