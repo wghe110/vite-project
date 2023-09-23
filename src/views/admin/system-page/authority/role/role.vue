@@ -1,5 +1,5 @@
 <template>
-  <div>welcome</div>
+  <div>role</div>
 </template>
 
 <script>

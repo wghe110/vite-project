@@ -47,6 +47,8 @@ export default {
     },
     userCommandFn(val) {
       console.log("userCommandFn", val);
+      console.log("this.$router", this.$router);
+      this.$router.push({ path: "/biyi-role" });
     },
   },
 };

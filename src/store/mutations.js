@@ -13,5 +13,8 @@ export default {
   },
   setMenuList(state, val) {
     state.menuList = val
+  },
+  setInited(state, val) {
+    state.inited = val
   }
 }

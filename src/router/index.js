@@ -4,25 +4,21 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: () => import('../views/home/index.vue'),
-      children: [
-        {
-          path: '/welcome',
-          component: () => import('../views/welcome/index.vue'),
-        },
-      ]
+      name: 'main',
+      component: () => import('../views/layout/index.vue'),
+      children: []
     },
     {
       path: '/login',
-      component: () => import('../views/home/login/index.vue'),
+      component: () => import('../views/login/index.vue'),
     },
     {
       path: '/change-pwd',
-      component: () => import('../views/home/change-pwd.vue'),
+      component: () => import('../views/change-pwd.vue'),
     },
     {
       path: '*',
-      component: () => import('../views/home/404.vue'),
+      component: () => import('../views/404.vue'),
     },
   ]
 })

@@ -105,6 +105,8 @@ import { formatLockedTime } from "./utils";
 import rules from "./rules";
 import Alert from "./Alert.vue";
 
+import router from "@/router/index";
+
 export default {
   components: {
     Alert,
@@ -193,7 +195,7 @@ export default {
           confirmButtonText: "确定",
           showClose: false,
           callback: () => {
-            this.$router.replace("/change-pwd");
+            router.replace("/change-pwd");
           },
         });
       }
@@ -207,9 +209,13 @@ export default {
         type: "success",
         message: `登录成功`,
       });
+
       setTimeout(() => {
-        this.$router.replace("/welcome");
-      }, 2000);
+        router.replace("/").catch((err) => {
+          this.isSuccess = false;
+          console.log("----");
+        });
+      }, 1500);
     },
     loginFailFn(err) {
       this.getCodeFn();

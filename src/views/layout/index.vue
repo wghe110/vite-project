@@ -15,15 +15,8 @@
 <script>
 import { mapState } from "vuex";
 
-import createLoading from "./preload/loading";
-import loadUserInfo from "./preload/load-user-info";
-import loadDicts from "./preload/dict";
-import initHeaderAndAside from "./preload/init-header-aside";
-import initToken from "./preload/init-token";
-import loadMenus from "./preload/init-menus";
-
-import ComHeader from "./header/index.vue";
-import ComAside from "./aside/index.vue";
+import ComHeader from "@/views/layout/header/index.vue";
+import ComAside from "@/views/layout/aside/index.vue";
 
 export default {
   components: {
@@ -35,28 +28,13 @@ export default {
       collapse: false,
     };
   },
-  beforeRouteEnter(to, from, next) {
-    // 判断是否隐藏头部和左侧菜单
-    initHeaderAndAside(to);
-    // 判断是否携带token
-    initToken(to);
-
-    // 加载必须资源(菜单/必须字典/用户信息...)，阻塞资源
-    const loading = createLoading();
-    loading.show();
-
-    Promise.all([loadUserInfo(), loadMenus(), loadDicts()])
-      .then(next)
-      .finally(() => {
-        loading.hide();
-      });
-  },
   computed: {
     ...mapState(["showHeader", "showAside"]),
   },
   methods: {},
 };
 </script>
+
 
 <style lang="scss" scoped>
 .wrap {

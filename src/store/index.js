@@ -14,7 +14,8 @@ const store = new Vuex.Store({
     showAside: true,
     global: 1,
     menuList: [],
-    menus: []
+    menus: [],
+    inited: false,
   },
   getters,
   mutations,
