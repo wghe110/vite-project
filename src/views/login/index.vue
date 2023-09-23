@@ -211,10 +211,7 @@ export default {
       });
 
       setTimeout(() => {
-        router.replace("/").catch((err) => {
-          this.isSuccess = false;
-          console.log("----");
-        });
+        router.replace("/");
       }, 1500);
     },
     loginFailFn(err) {

@@ -1,4 +1,5 @@
 import VueRouter from 'vue-router'
+import './fixedBug'
 
 const router = new VueRouter({
   routes: [
