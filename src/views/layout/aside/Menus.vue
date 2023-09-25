@@ -79,10 +79,15 @@ export default {
       .el-submenu__title > i,
       .el-menu-item > i {
         margin: 0;
+        font-size: 20px;
+        color: #fff;
       }
       .el-menu-item,
       .el-submenu__title {
         text-align: center;
+      }
+      .el-submenu.is-active {
+        background-color: #2d8cf0;
       }
     }
   }
@@ -95,5 +100,9 @@ export default {
   > i {
     margin-right: 6px;
   }
+}
+.el-menu--popup .el-menu-item.is-active {
+  color: #2d8cf0 !important;
+  background: #f0faff;
 }
 </style>
