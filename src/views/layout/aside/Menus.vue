@@ -2,11 +2,12 @@
   <el-scrollbar style="height: 100%">
     <div class="wrap-menus">
       <el-menu
-        default-active="1-4-1"
         active-text-color="#fff"
         :unique-opened="true"
         :collapse="collapse"
         :collapse-transition="false"
+        :default-active="activePath"
+        @select="selectFn"
       >
         <MenuComVue :list="menus" />
       </el-menu>
@@ -28,8 +29,20 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {};
+  },
   computed: {
-    ...mapState(["menus"]),
+    ...mapState(["menus", "activePath"]),
+  },
+  methods: {
+    selectFn(index, indexPath) {
+      const { path } = this.$route;
+      if (path === index) return;
+
+      this.$store.commit("setActivePath", index);
+      this.$router.push(index);
+    },
   },
 };
 </script>

@@ -16,5 +16,8 @@ export default {
   },
   setInited(state, val) {
     state.inited = val
+  },
+  setActivePath(state, val) {
+    state.activePath = val
   }
 }

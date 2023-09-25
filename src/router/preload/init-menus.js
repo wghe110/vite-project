@@ -3,9 +3,9 @@ import { arrayToTree } from '@/utils/tool'
 import store from '@/store/index'
 import { cloneDeep } from 'lodash'
 import router from '@/router/index'
+import NotFound from '@/views/layout/not-found.vue'
 
-const modules = import.meta.glob('../../../views/**/*.vue')
-console.log('modules', modules)
+const modules = import.meta.glob('../../views/**/*.vue')
 
 const initRouteFn = (item) => {
 
@@ -23,8 +23,9 @@ const initRouteFn = (item) => {
   }
 
   if (typeof component === 'string' && component) {
-    const url = `../../${component.replace('views/', '')}`
-    route.component = modules[url]
+    const url = `../../${component}`
+    route.component = modules[url] || NotFound
+    route.meta.path = component
   }
 
   return route

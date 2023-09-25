@@ -16,6 +16,7 @@ const store = new Vuex.Store({
     menuList: [],
     menus: [],
     inited: false,
+    activePath: ''
   },
   getters,
   mutations,
