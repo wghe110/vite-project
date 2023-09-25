@@ -48,7 +48,7 @@ export default {
 
       const getMenuFn = (item) => {
         const { icon } = item;
-        const inner = [h("span", {}, item.title)];
+        const inner = [h("span", { slot: "title" }, item.title)];
         if (icon)
           inner.unshift(
             h(Icon, {
@@ -65,15 +65,7 @@ export default {
               index: item.url,
             },
           },
-          [
-            h(
-              "template",
-              {
-                slot: "title",
-              },
-              inner
-            ),
-          ]
+          inner
         );
       };
 

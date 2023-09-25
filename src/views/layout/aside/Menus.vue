@@ -75,6 +75,16 @@ export default {
     .el-submenu__title i {
       color: #c3c5ca;
     }
+    .el-menu--collapse {
+      .el-submenu__title > i,
+      .el-menu-item > i {
+        margin: 0;
+      }
+      .el-menu-item,
+      .el-submenu__title {
+        text-align: center;
+      }
+    }
   }
 }
 </style>
