@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import api from "@/apis/login";
+
 export default {
   data() {
     return {
@@ -46,9 +48,27 @@ export default {
       this.fullscreen = ele && ele === document.documentElement;
     },
     userCommandFn(val) {
-      console.log("userCommandFn", val);
-      console.log("this.$router", this.$router);
-      this.$router.push({ path: "/biyi-role" });
+      switch (val) {
+        case "logout":
+          this.logoutFn();
+          break;
+
+        default:
+          break;
+      }
+    },
+    logoutFn() {
+      api
+        .logout()
+        .then(() => {
+          this.$message.success("退出登录成功");
+          localStorage.removeItem("token");
+          this.$store.commit("setInited", false);
+          this.$router.push("/login");
+        })
+        .catch((err) => {
+          this.$message.error("退出登录失败");
+        });
     },
   },
 };

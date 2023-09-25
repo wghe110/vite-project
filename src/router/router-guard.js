@@ -20,6 +20,7 @@ router.beforeEach((to, from, next) => {
   Promise.all([loadUserInfo(), loadDicts(), loadMenus()])
     .then(() => {
       store.commit('setInited', true)
+      console.log('to', to)
       next({ ...to })
     })
 })

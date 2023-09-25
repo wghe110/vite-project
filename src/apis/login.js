@@ -5,5 +5,6 @@ export default {
   getCode: (params) => instance.get('/api/catpcha/digitalCaptcha', { params }),
   login: (data, headers) => instance.post('/api/system/login', data, {
     headers
-  })
+  }),
+  logout: () => instance.post('/api/system/logout')
 }
