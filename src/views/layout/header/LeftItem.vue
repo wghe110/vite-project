@@ -3,7 +3,7 @@
     <i class="el-icon-s-unfold icon" v-if="collapse" @click="toggleFn"></i>
     <i class="el-icon-s-fold icon" v-else @click="toggleFn"></i>
 
-    <span class="word">菜单管理</span>
+    <span class="word">{{ stitle || "--" }}</span>
   </div>
 </template>
 
@@ -15,9 +15,28 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      stitle: "",
+    };
+  },
+  watch: {
+    $route() {
+      this.setTitFn();
+    },
+  },
+  created() {
+    this.setTitFn();
+  },
   methods: {
     toggleFn() {
       this.$emit("update:collapse", !this.collapse);
+    },
+    setTitFn() {
+      const {
+        meta: { title },
+      } = this.$route;
+      if (title) this.stitle = title;
     },
   },
 };

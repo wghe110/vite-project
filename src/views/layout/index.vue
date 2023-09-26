@@ -6,7 +6,9 @@
       <ComHeader v-if="showHeader" :collapse.sync="collapse" />
 
       <div class="inner-content">
-        <router-view></router-view>
+        <div>
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
@@ -41,15 +43,23 @@ export default {
   height: 100vh;
   display: flex;
   background: #f0f2f5;
+  overflow: auto;
   > .content {
     flex: 1;
     min-height: 400px;
     display: flex;
     flex-direction: column;
+    min-width: 1240px;
     > .inner-content {
       flex: 1;
       min-width: 500px;
       overflow: auto;
+      min-height: 400px;
+      > div {
+        padding: 24px;
+        height: 100%;
+        box-sizing: border-box;
+      }
     }
   }
 }
