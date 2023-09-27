@@ -1,0 +1,21 @@
+// 变量
+$--border-radius-base: 2px;
+$--border-color-base: #CECECE;
+
+// input
+$--input-height: 36px;
+$--input-font-color: #2A2A2A;
+
+// button
+$--button-padding-vertical: 10px;
+$--button-padding-horizontal: 24px;
+
+// table
+$--table-font-color: #2A2A2A;
+$--table-header-font-color: #2A2A2A;
+$--table-header-background-color: #F7F8FA;
+$--table-border-color: #EFF1F4;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: 'element-ui/lib/theme-chalk/fonts';
+@import "element-ui/packages/theme-chalk/src/index";

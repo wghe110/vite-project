@@ -1,3 +1,38 @@
 .el-scrollbar__wrap {
   overflow-x: hidden !important;
 }
+
+// el-input
+.el-input__inner {
+  padding: 0 11px;
+}
+
+// pagination
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .el-pager li {
+  background-color: #fff;
+  border: 1px solid #EAEBEC;
+  color: #2A2A2A;
+  font-weight: normal;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active,
+.el-pagination.is-background .el-pager li:not(.disabled):hover {
+  background-color: #fff;
+  border-color: #409EFF;
+  color: #409EFF;
+}
+
+.el-pagination.is-background .btn-prev:not([disabled]):hover,
+.el-pagination.is-background .btn-next:not([disabled]):hover,
+.el-pagination.is-background .el-pager li:hover {
+  background-color: #fff;
+  border-color: #409EFF;
+  color: #409EFF;
+}
+
+.el-pagination__total,
+.el-pagination__jump {
+  color: #2A2A2A;
+}
