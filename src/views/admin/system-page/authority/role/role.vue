@@ -55,7 +55,7 @@
 
     <c-section-item class="content">
       <div class="info">
-        <el-button type="primary" @click="submitFn">查询</el-button>
+        <el-button type="primary" @click="createFn">新建</el-button>
       </div>
 
       <div class="table-box">
@@ -81,6 +81,19 @@
         :total="page.total"
       ></c-pagination>
     </c-section-item>
+
+    <!-- dialog -->
+    <c-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+      <span>这是一段信息</span>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible = false"
+            >确 定</el-button
+          >
+        </span>
+      </template>
+    </c-dialog>
   </div>
 </template>
 
@@ -282,8 +295,11 @@ export default {
           address: "上海市普陀区金沙江路 1518 弄",
         },
       ],
+
+      dialogVisible: true,
     };
   },
+  created() {},
   methods: {
     submitFn() {
       console.log("submit");
@@ -318,6 +334,17 @@ export default {
           },
         },
       ];
+    },
+    createFn() {
+      this.$alert("这是一段内容", "标题名称", {
+        confirmButtonText: "确定",
+        callback: (action) => {
+          this.$message({
+            type: "info",
+            message: `action: ${action}`,
+          });
+        },
+      });
     },
   },
 };

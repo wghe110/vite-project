@@ -36,3 +36,76 @@
 .el-pagination__jump {
   color: #2A2A2A;
 }
+
+// message-box
+.el-message-box {
+  width: 400px;
+  padding-bottom: 24px;
+}
+
+.el-message-box__header {
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.el-message-box__header {
+  height: 56px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.el-message-box__title {
+  color: #2A2A2A;
+  font-family: PingFang SC;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.el-message-box__btns {
+  padding: 0 24px;
+
+  .el-button--small {
+    font-size: 14px;
+    padding: 12px 27px;
+  }
+}
+
+.el-message-box__content {
+  padding: 16px 24px;
+}
+
+.el-message-box__headerbtn .el-message-box__close {
+  font-size: 20px;
+  color: #737373;
+}
+
+// dialog
+.el-dialog {
+  border-radius: 4px;
+}
+
+.el-dialog__header {
+  border-bottom: 1px solid #EBEBEB;
+  padding-bottom: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.el-dialog__body {
+  padding: 24px;
+}
+
+.el-dialog__footer {
+  padding: 24px;
+  padding-top: 0;
+}
+
+.el-dialog__title {
+  color: #2A2A2A;
+  font-weight: bolder;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+  color: #737373;
+  font-size: 20px;
+}

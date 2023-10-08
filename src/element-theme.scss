@@ -16,6 +16,11 @@ $--table-header-font-color: #2A2A2A;
 $--table-header-background-color: #F7F8FA;
 $--table-border-color: #EFF1F4;
 
+// dialog
+$--dialog-padding-primary: 18px;
+$--dialog-font-line-height: 22px;
+$--dialog-title-font-size: 16px;
+
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: 'element-ui/lib/theme-chalk/fonts';
 @import "element-ui/packages/theme-chalk/src/index";

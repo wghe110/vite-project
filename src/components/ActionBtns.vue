@@ -19,7 +19,7 @@
         >{{ item.text }}</el-button
       >
 
-      <el-dropdown>
+      <el-dropdown @command="commandFn">
         <div class="more">
           <span>更多</span>
           <i class="el-icon-arrow-down"></i>
@@ -60,6 +60,12 @@ export default {
     hideList() {
       const { actions, limit } = this;
       return actions.slice(limit - 1);
+    },
+  },
+  methods: {
+    commandFn(val) {
+      const obj = this.hideList.find((item) => item.text === val);
+      obj && obj.clickFn();
     },
   },
 };

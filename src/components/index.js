@@ -5,6 +5,7 @@ import FilterItem from './FilterItem.vue'
 import Table from './Table.vue'
 import Pagination from './Pagination.vue'
 import ActionBtns from './ActionBtns.vue'
+import Dialog from './Dialog.vue'
 
 const VantPlus = {
   install(Vue, options) {
@@ -15,6 +16,7 @@ const VantPlus = {
     Vue.component('c-table', Table)
     Vue.component('c-pagination', Pagination)
     Vue.component('c-action-btns', ActionBtns)
+    Vue.component('c-dialog', Dialog)
   }
 }
 

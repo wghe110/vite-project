@@ -227,7 +227,7 @@ export default {
         }
 
         const locktime = formatLockedTime(err.data.lockoutTime);
-        this.customerAlertFn({
+        return this.customerAlertFn({
           message: `登录失败，您的账号已被锁定，请在 ${locktime} 后重试！`,
         });
       }
