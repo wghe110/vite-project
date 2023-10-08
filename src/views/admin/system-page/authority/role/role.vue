@@ -55,7 +55,9 @@
 
     <c-section-item class="content">
       <div class="info">
-        <el-button type="primary" @click="createFn">新建</el-button>
+        <el-button type="primary" @click="createFn">提示信息</el-button>
+        <el-button @click="dialogFn">弹出框</el-button>
+        <el-button @click="drawer = true">抽屉</el-button>
       </div>
 
       <div class="table-box">
@@ -94,6 +96,18 @@
         </span>
       </template>
     </c-dialog>
+
+    <c-drawer title="我是标题" :visible.sync="drawer">
+      <c-list>
+        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
+        <c-list-item label="URL地址"
+          >安徽托卡智能科技有限公司安徽托卡智能科技有限公司安徽托卡智能科技有限公司安徽托卡智能科技有限公司</c-list-item
+        >
+        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
+        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
+        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
+      </c-list>
+    </c-drawer>
   </div>
 </template>
 
@@ -296,7 +310,8 @@ export default {
         },
       ],
 
-      dialogVisible: true,
+      dialogVisible: false,
+      drawer: false,
     };
   },
   created() {},
@@ -345,6 +360,9 @@ export default {
           });
         },
       });
+    },
+    dialogFn() {
+      this.dialogVisible = true;
     },
   },
 };

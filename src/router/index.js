@@ -7,12 +7,7 @@ const router = new VueRouter({
       path: '/',
       name: 'main',
       component: () => import('../views/layout/index.vue'),
-      children: [
-        {
-          path: '/biyi-role',
-          component: () => import('../views/admin/system-page/authority/role/role.vue')
-        }
-      ]
+      children: []
     },
     {
       path: '/login',

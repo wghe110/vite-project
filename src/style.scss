@@ -109,3 +109,23 @@
   color: #737373;
   font-size: 20px;
 }
+
+// drawer
+.el-drawer__header {
+  margin-bottom: 24px;
+  padding: 0 16px;
+  height: 56px;
+  border-bottom: 1px solid #E7E7E7;
+}
+
+.el-drawer__header> :first-child {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.90);
+}
+
+.el-dialog__close {
+  font-size: 16px;
+}

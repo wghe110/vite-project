@@ -9,9 +9,8 @@
   padding: 24px;
   background-color: #fff;
   border-radius: 4px;
-  margin-bottom: 16px;
-  &:last-child {
-    margin-bottom: 0;
+  & + .wrap-section-item {
+    margin-top: 16px;
   }
 }
 </style>
