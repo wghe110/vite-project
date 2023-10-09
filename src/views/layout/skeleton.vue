@@ -38,6 +38,8 @@ export default {};
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #515a6e;
+      font-size: 14px;
     }
   }
   .item {
