@@ -50,7 +50,7 @@ export default {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 1.4;
     margin-right: 16px;
     &.right {
       text-align: right;
@@ -64,7 +64,7 @@ export default {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 1.4;
   }
 }
 </style>
