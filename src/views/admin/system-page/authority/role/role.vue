@@ -1,72 +1,48 @@
 <template>
   <div class="wrap-role">
     <c-section-item>
-      <c-filter @keydown.enter.native="submitFn">
-        <c-filter-item label="这是一个标签">
+      <c-filter @keydown.enter.native="searchFn">
+        <c-filter-item label="角色名">
           <el-input
-            v-model="val"
-            placeholder="请输入内容"
+            v-model="uname"
+            placeholder="请输入角色名称"
             style="width: 100%"
-          ></el-input>
-        </c-filter-item>
-
-        <c-filter-item label="这是一个标签">
-          <el-select v-model="selectVal" placeholder="请选择">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
-        </c-filter-item>
-
-        <c-filter-item label="这是一个标签">
-          <el-input
-            v-model="val"
-            placeholder="请输入内容"
-            style="width: 100%"
-          ></el-input>
-        </c-filter-item>
-
-        <c-filter-item label="这是一个标签">
-          <el-input
-            v-model="val"
-            placeholder="请输入内容"
-            style="width: 100%"
-          ></el-input>
-        </c-filter-item>
-
-        <c-filter-item label="这是一个标签">
-          <el-input
-            v-model="val"
-            placeholder="请输入内容"
-            style="width: 100%"
+            clearable
           ></el-input>
         </c-filter-item>
 
         <c-filter-item>
-          <el-button type="primary" @click="submitFn">查询</el-button>
-          <el-button>重置</el-button>
+          <el-button type="primary" @click="searchFn(true)">查询</el-button>
+          <el-button @click="cancelFn">重置</el-button>
         </c-filter-item>
       </c-filter>
     </c-section-item>
 
     <c-section-item class="content">
       <div class="info">
-        <el-button type="primary" @click="createFn">提示信息</el-button>
-        <el-button @click="dialogFn">弹出框</el-button>
-        <el-button @click="drawer = true">抽屉</el-button>
+        <el-button type="primary" icon="el-icon-plus" @click="createFn"
+          >新增</el-button
+        >
       </div>
 
       <div class="table-box">
         <c-table :data="tableData">
-          <el-table-column prop="date" label="日期" width="180">
+          <el-table-column prop="name" label="角色名"> </el-table-column>
+          <el-table-column prop="dataScope" label="权限范围">
+            <template slot-scope="scope">
+              <span>{{ getScopeNameFn(scope.row.dataScope) }}</span>
+            </template>
           </el-table-column>
-          <el-table-column prop="name" label="姓名" width="180">
+          <el-table-column prop="icon" label="图标">
+            <template slot-scope="scope">
+              <Icon
+                v-if="scope.row.icon"
+                :type="scope.row.icon"
+                size="20"
+              ></Icon>
+              <span v-else>--</span>
+            </template>
           </el-table-column>
-          <el-table-column prop="address" label="地址"> </el-table-column>
           <el-table-column label="操作" width="160">
             <template slot-scope="scope">
               <c-action-btns :actions="getActionsFn(scope)"></c-action-btns>
@@ -112,203 +88,22 @@
 </template>
 
 <script>
+import { Icon } from "view-design";
+import api from "@/apis/system";
+
 export default {
+  components: {
+    Icon,
+  },
   data() {
     return {
-      val: "",
+      uname: "",
       page: {
         current: 1,
         size: 10,
-        total: 400,
+        total: 0,
       },
-      selectVal: "选项1",
-      options: [
-        {
-          value: "选项1",
-          label: "黄金糕",
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭",
-        },
-      ],
-      tableData: [
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-      ],
+      tableData: [],
 
       dialogVisible: false,
       drawer: false,
@@ -316,11 +111,43 @@ export default {
   },
   created() {},
   methods: {
-    submitFn() {
-      console.log("submit");
+    searchFn(resetPage = false) {
+      if (resetPage) this.page.current = 1;
+
+      const params = this.getParamsFn();
+      api.getRoleList(params).then((res) => {
+        const { recordsTotal, data } = res;
+        this.tableData = data || [];
+        this.page.total = recordsTotal || 0;
+      });
     },
-    handleSizeChange() {},
-    handleCurrentChange() {},
+    getParamsFn() {
+      const {
+        uname,
+        page: { current, size },
+      } = this;
+
+      return {
+        page: current,
+        size,
+        "name.contains": uname,
+      };
+    },
+    cancelFn() {
+      this.uname = "";
+      this.page.current = 1;
+      this.page.size = 10;
+
+      this.searchFn();
+    },
+    handleSizeChange(val) {
+      this.page.size = val;
+      this.searchFn(true);
+    },
+    handleCurrentChange(val) {
+      this.page.current = val;
+      this.searchFn();
+    },
     getActionsFn(scope) {
       const { row } = scope;
       return [
@@ -363,6 +190,16 @@ export default {
     },
     dialogFn() {
       this.dialogVisible = true;
+    },
+    getScopeNameFn(num) {
+      const aNames = [
+        "全部数据权限",
+        "自定数据权限",
+        "本部门数据权限",
+        "本部门及以下数据权限",
+        "仅本人数据权限",
+      ];
+      return num ? aNames[num - 1] : "暂无数据";
     },
   },
 };

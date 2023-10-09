@@ -31,6 +31,7 @@ export default {
   display: flex;
   flex-direction: column;
   transition: width 0.2s;
+  flex-shrink: 0;
   &.collapse {
     width: 64px;
   }
