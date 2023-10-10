@@ -60,40 +60,20 @@
       ></c-pagination>
     </c-section-item>
 
-    <!-- dialog -->
-    <c-dialog title="提示" :visible.sync="dialogVisible" width="30%">
-      <span>这是一段信息</span>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false"
-            >确 定</el-button
-          >
-        </span>
-      </template>
-    </c-dialog>
-
-    <c-drawer title="我是标题" :visible.sync="drawer">
-      <c-list>
-        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
-        <c-list-item label="URL地址"
-          >安徽托卡智能科技有限公司安徽托卡智能科技有限公司安徽托卡智能科技有限公司安徽托卡智能科技有限公司</c-list-item
-        >
-        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
-        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
-        <c-list-item label="URL地址">安徽托卡智能科技有限公司</c-list-item>
-      </c-list>
-    </c-drawer>
+    <!-- create dialog -->
+    <Create></Create>
   </div>
 </template>
 
 <script>
 import { Icon } from "view-design";
 import api from "@/apis/system";
+import Create from "./create.vue";
 
 export default {
   components: {
     Icon,
+    Create,
   },
   data() {
     return {
@@ -104,9 +84,6 @@ export default {
         total: 0,
       },
       tableData: [],
-
-      dialogVisible: false,
-      drawer: false,
     };
   },
   created() {},
@@ -150,47 +127,53 @@ export default {
     },
     getActionsFn(scope) {
       const { row } = scope;
-      return [
+      const arr = [
         {
-          text: "查看",
+          text: "详情",
           clickFn() {
             console.log("查看scope", row);
           },
         },
-        {
-          text: "编辑",
-          clickFn() {
-            console.log("编辑scope", row);
-          },
-        },
-        {
-          text: "删除",
-          clickFn() {
-            console.log("删除scope", row);
-          },
-        },
-        {
-          text: "关闭",
-          clickFn() {
-            console.log("关闭scope", row);
-          },
-        },
       ];
+
+      if (row.name !== "admin") {
+        arr.push(
+          {
+            text: "编辑",
+            clickFn() {
+              console.log("查看scope", row);
+            },
+          },
+          {
+            text: "删除",
+            clickFn() {
+              console.log("查看scope", row);
+            },
+          },
+          {
+            text: "数据权限",
+            clickFn() {
+              console.log("查看scope", row);
+            },
+          },
+          {
+            text: "复制",
+            clickFn() {
+              console.log("查看scope", row);
+            },
+          },
+          {
+            text: "分配用户",
+            clickFn() {
+              console.log("查看scope", row);
+            },
+          }
+        );
+      }
+
+      return arr;
     },
-    createFn() {
-      this.$alert("这是一段内容", "标题名称", {
-        confirmButtonText: "确定",
-        callback: (action) => {
-          this.$message({
-            type: "info",
-            message: `action: ${action}`,
-          });
-        },
-      });
-    },
-    dialogFn() {
-      this.dialogVisible = true;
-    },
+    createFn() {},
     getScopeNameFn(num) {
       const aNames = [
         "全部数据权限",
