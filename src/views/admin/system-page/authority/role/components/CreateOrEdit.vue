@@ -6,6 +6,7 @@
         style="width: 100%"
         placeholder="请输入名称"
         clearable
+        maxlength="50"
       ></el-input>
     </el-form-item>
 
@@ -40,7 +41,7 @@
     </el-form-item>
 
     <el-form-item label="菜单" prop="menus">
-      <InputMenus v-model="form.menus"></InputMenus>
+      <InputMenus v-model="form.menus" :key="key"></InputMenus>
     </el-form-item>
   </el-form>
 </template>
@@ -49,11 +50,28 @@
 import { iconList } from "./icon-list";
 import { Icon } from "view-design";
 import InputMenus from "./InputMenus.vue";
+import api from "@/apis/system";
+
+const validateNameFn = (rule, value, callback) => {
+  api.validName({ name: value }).then((res) => {
+    const { code, msg } = res;
+    if (code !== 200) {
+      return callback(new Error(msg || "名称校验失败"));
+    }
+    callback();
+  });
+};
 
 export default {
   components: {
     Icon,
     InputMenus,
+  },
+  props: {
+    edit: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -61,17 +79,46 @@ export default {
         name: "",
         roleExtent: "",
         icon: "",
-        menus: ["1628035401946042370", "162803588345633587"],
+        menus: [],
       },
       rules: {
-        name: [{ required: true, message: "请输入名称", trigger: "blur" }],
-        icon: [{ required: true, message: "请选择图标", trigger: "blur" }],
+        name: [
+          { required: true, message: "请输入名称", trigger: "blur" },
+          {
+            pattern: /^[0-9a-zA-Z\u4e00-\u9fa5]+$/,
+            message: "名称不允许存在特殊字符",
+            trigger: "change",
+          },
+          { validator: validateNameFn, trigger: "submit" },
+        ],
+        icon: [{ required: true, message: "请选择图标", trigger: "change" }],
       },
       iconList: [...new Set(iconList)],
+      key: 1,
     };
   },
-  created() {},
-  methods: {},
+  created() {
+    if (this.edit) this.rules.name.pop();
+  },
+  methods: {
+    getParamsFn() {
+      return {
+        ...this.form,
+      };
+    },
+    resetFields() {
+      this.$refs.formRef.resetFields();
+      this.key += 1;
+    },
+    initDataFn(obj) {
+      Object.keys(obj).forEach((key) => {
+        this.$set(this.form, key, obj[key]);
+      });
+    },
+    initMenuFn(arr) {
+      this.form.menus = arr;
+    },
+  },
 };
 </script>
 

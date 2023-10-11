@@ -1,6 +1,6 @@
 <template>
   <div class="wrap-input-tree">
-    <el-tree v-bind="$attrs" v-on="$listeners">
+    <el-tree v-bind="$attrs" v-on="$listeners" ref="treeRef">
       <template #default="{ node, data }">
         <slot :data="data" :node="node"></slot>
       </template>

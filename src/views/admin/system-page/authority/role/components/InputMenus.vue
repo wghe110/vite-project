@@ -1,6 +1,7 @@
 <template>
   <InputTreeVue
     show-checkbox
+    ref="inputTreeRef"
     :render-after-expand="false"
     node-key="id"
     :data="menuData"
@@ -23,6 +24,15 @@ export default {
     InputTreeVue,
   },
   props: {
+    props: {
+      type: Object,
+      default() {
+        return {
+          children: "items",
+          label: "id",
+        };
+      },
+    },
     value: {
       type: Array,
       default() {
@@ -35,10 +45,6 @@ export default {
       timer: null,
       cache: new Set(),
       menuData: [],
-      props: {
-        children: "items",
-        label: "id",
-      },
     };
   },
   computed: {

@@ -61,7 +61,11 @@
     </c-section-item>
 
     <!-- create dialog -->
-    <Create></Create>
+    <Create ref="createRef" @success="searchFn(true)"></Create>
+    <!-- detail dialog -->
+    <Detail ref="detailRef"></Detail>
+    <!-- edit dialog -->
+    <Edit ref="editRef"></Edit>
   </div>
 </template>
 
@@ -69,11 +73,15 @@
 import { Icon } from "view-design";
 import api from "@/apis/system";
 import Create from "./create.vue";
+import Detail from "./detail.vue";
+import Edit from "./edit.vue";
 
 export default {
   components: {
     Icon,
     Create,
+    Detail,
+    Edit,
   },
   data() {
     return {
@@ -86,7 +94,9 @@ export default {
       tableData: [],
     };
   },
-  created() {},
+  created() {
+    this.searchFn(true);
+  },
   methods: {
     searchFn(resetPage = false) {
       if (resetPage) this.page.current = 1;
@@ -127,11 +137,15 @@ export default {
     },
     getActionsFn(scope) {
       const { row } = scope;
+      const self = this;
       const arr = [
         {
           text: "详情",
           clickFn() {
-            console.log("查看scope", row);
+            const target = self.$refs.detailRef;
+            target.visible = true;
+            target.getDetailFn(row.id);
+            target.getMenusFn(row.id);
           },
         },
       ];
@@ -141,7 +155,10 @@ export default {
           {
             text: "编辑",
             clickFn() {
-              console.log("查看scope", row);
+              const target = self.$refs.editRef;
+              target.visible = true;
+              target.getDetailFn(row.id);
+              target.getMenusFn(row.id);
             },
           },
           {
@@ -173,7 +190,9 @@ export default {
 
       return arr;
     },
-    createFn() {},
+    createFn() {
+      this.$refs.createRef.visible = true;
+    },
     getScopeNameFn(num) {
       const aNames = [
         "全部数据权限",

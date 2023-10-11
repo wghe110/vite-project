@@ -3,7 +3,7 @@ import { Message } from 'element-ui';
 import router from '@/router/index'
 
 const instance = axios.create({
-  timeout: 25000,
+  timeout: 25000
 })
 
 // 添加请求拦截器
@@ -15,7 +15,7 @@ instance.interceptors.request.use(function (config) {
 // 响应拦截器
 instance.interceptors.response.use((response) => {
   const { status, data } = response
-  if (status === 200) {
+  if (status === 200 || status === 201) {
     return Promise.resolve(data)
   }
   return Promise.reject(response);
