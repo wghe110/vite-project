@@ -65,7 +65,7 @@
     <!-- detail dialog -->
     <Detail ref="detailRef"></Detail>
     <!-- edit dialog -->
-    <Edit ref="editRef"></Edit>
+    <Edit ref="editRef" @success="searchFn"></Edit>
   </div>
 </template>
 
@@ -164,25 +164,36 @@ export default {
           {
             text: "删除",
             clickFn() {
-              console.log("查看scope", row);
+              self
+                .$confirm("是否删除选择的数据？", "警告", {
+                  confirmButtonText: "确定",
+                  cancelButtonText: "取消",
+                  type: "warning",
+                })
+                .then(() => {
+                  self.validRoleFn(row.id).then(() => {
+                    self.deleteFn(row.id);
+                  });
+                })
+                .catch(() => {});
             },
           },
           {
             text: "数据权限",
             clickFn() {
-              console.log("查看scope", row);
+              self.$message.warning("功能未实现");
             },
           },
           {
             text: "复制",
             clickFn() {
-              console.log("查看scope", row);
+              self.$message.warning("功能未实现");
             },
           },
           {
             text: "分配用户",
             clickFn() {
-              console.log("查看scope", row);
+              self.$message.warning("功能未实现");
             },
           }
         );
@@ -202,6 +213,28 @@ export default {
         "仅本人数据权限",
       ];
       return num ? aNames[num - 1] : "暂无数据";
+    },
+    validRoleFn(id) {
+      return new Promise((resolve, reject) => {
+        api.validRoleUsed(id).then((res) => {
+          if (res === "0") return resolve();
+          this.$message.warning(`该角色已被 ${res} 个账号使用，禁止删除`);
+          reject();
+        }, reject);
+      });
+    },
+    deleteFn(id) {
+      api
+        .deleteRole(id)
+        .then(() => {
+          this.$message.success("删除成功");
+          this.searchFn(true);
+          return;
+        })
+        .catch((err) => {
+          console.error(err);
+          this.$message.error("删除失败");
+        });
     },
   },
 };

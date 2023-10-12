@@ -24,4 +24,8 @@ export default {
   getRoleDetail: (id) => instance.get('/api/system/cscpRoless/' + id),
   // 更新角色
   updateRole: (params) => instance.post('/api/system/updateCscpRoles', params),
+  // 判断角色是否被使用
+  validRoleUsed: (id) => instance.get('/api/system/cscpRoleUsers/' + id),
+  // 删除角色
+  deleteRole: (id) => instance.post('/api/system/cscpRoless/' + id),
 }

@@ -52,13 +52,17 @@ import { Icon } from "view-design";
 import InputMenus from "./InputMenus.vue";
 import api from "@/apis/system";
 
-const validateNameFn = (rule, value, callback) => {
+const validateNameFn = (rule, value, callback, self) => {
+  const { edit, oldName } = self;
+
+  if (edit && oldName === value) return callback();
+
   api.validName({ name: value }).then((res) => {
     const { code, msg } = res;
     if (code !== 200) {
       return callback(new Error(msg || "名称校验失败"));
     }
-    callback();
+    return callback();
   });
 };
 
@@ -75,6 +79,7 @@ export default {
   },
   data() {
     return {
+      oldName: "",
       form: {
         name: "",
         roleExtent: "",
@@ -89,16 +94,16 @@ export default {
             message: "名称不允许存在特殊字符",
             trigger: "change",
           },
-          { validator: validateNameFn, trigger: "submit" },
+          {
+            validator: this.validNameFn,
+            trigger: "submit",
+          },
         ],
         icon: [{ required: true, message: "请选择图标", trigger: "change" }],
       },
       iconList: [...new Set(iconList)],
       key: 1,
     };
-  },
-  created() {
-    if (this.edit) this.rules.name.pop();
   },
   methods: {
     getParamsFn() {
@@ -114,9 +119,15 @@ export default {
       Object.keys(obj).forEach((key) => {
         this.$set(this.form, key, obj[key]);
       });
+
+      const { name } = obj;
+      this.oldName = name;
     },
     initMenuFn(arr) {
       this.form.menus = arr;
+    },
+    validNameFn(rule, value, callback) {
+      return validateNameFn(rule, value, callback, this);
     },
   },
 };
