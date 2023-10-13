@@ -28,4 +28,18 @@ export default {
   validRoleUsed: (id) => instance.get('/api/system/cscpRoleUsers/' + id),
   // 删除角色
   deleteRole: (id) => instance.post('/api/system/cscpRoless/' + id),
+  // 获取组织树
+  getOrgTree: () => instance.get('/api/system/car/dept/treeselect'),
+  // 查询用户列表
+  userList: (params) => instance.get('/api/sys/user/cscpUserDetailsOr', { params }),
+  // 校验用户名是否重复
+  validUserName: (params) => instance.get('/api/system/cscpUserExistByUsername', { params }),
+  // 创建用户
+  createUser: (params) => instance.post('/api/system/cscpUserDetails', params),
+  // 获取用户详情
+  getUserDetail: (params) => instance.get('/api/system/cscpUserDetailsByUserId', { params }),
+  // 更新用户
+  updateUser: (params) => instance.post('/api/system/updateCscpUserDetail/0', params),
+  // 删除用户
+  deleteUser: (userId) => instance.post('/api/system/cscpUsers/' + userId),
 }

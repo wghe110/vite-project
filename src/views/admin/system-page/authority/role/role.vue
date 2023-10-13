@@ -13,7 +13,7 @@
 
         <c-filter-item>
           <el-button type="primary" @click="searchFn(true)">查询</el-button>
-          <el-button @click="cancelFn">重置</el-button>
+          <el-button @click="resetFn">重置</el-button>
         </c-filter-item>
       </c-filter>
     </c-section-item>
@@ -120,7 +120,7 @@ export default {
         "name.contains": uname,
       };
     },
-    cancelFn() {
+    resetFn() {
       this.uname = "";
       this.page.current = 1;
       this.page.size = 10;
