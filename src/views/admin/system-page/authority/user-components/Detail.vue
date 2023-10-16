@@ -137,6 +137,7 @@
 
 <script>
 import api from "@/apis/system";
+import getParentIdsFn from "./getCasNodeId";
 
 export default {
   components: {},
@@ -190,7 +191,8 @@ export default {
           const { roleIds, roles, roleNames, rolesList, deptId, ...others } =
             res;
           this.form.roles = roleIds.split(",");
-          this.form.deptId = [deptId];
+          const ids = getParentIdsFn(this.opts.dept, deptId);
+          this.form.deptId = [...ids, deptId];
 
           const keys = Object.keys({ ...others });
           keys.forEach((key) => {

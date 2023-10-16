@@ -65,7 +65,7 @@ export default {
           const { roleIds, roles, roleNames, rolesList, deptId, ...others } =
             res;
           const obj = {
-            deptId: [deptId],
+            deptId,
             ...others,
           };
           obj.roles = roleIds.split(",");

@@ -110,6 +110,7 @@
 <script>
 import api from "@/apis/system";
 import getRules from "./rules";
+import getParentIdsFn from "./getCasNodeId";
 
 export default {
   components: {},
@@ -177,9 +178,13 @@ export default {
       });
     },
     initDataFn(obj) {
-      Object.keys(obj).forEach((key) => {
+      const { deptId, ...others } = obj;
+      Object.keys({ ...others }).forEach((key) => {
         this.$set(this.form, key, obj[key]);
       });
+
+      const ids = getParentIdsFn(this.opts.dept, deptId);
+      this.form.deptId = [...ids, deptId];
 
       const { username } = obj;
       this.oldUserName = username;
