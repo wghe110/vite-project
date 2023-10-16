@@ -48,4 +48,38 @@ export default {
   getActionLogList: (params) => instance.get('/api/system/cscpLogOperationsByCriteria', { params }),
   // 查询登录日志列表
   getLoginLogList: (params) => instance.get('/api/system/cscpLogLoginsByCriteria', { params }),
+  // 查询基础字典列表
+  getDictList: (params) => instance.get('/api/dic/cscpHxDics', { params }),
+  // 校验字典编码是否存在
+  validDictCode: (params) => instance.post('/api/dic/cscpHxDics/checkCscpHxDicCode', params),
+  // 校验字典名称是否存在
+  validDictName: (params) => instance.post('/api/dic/cscpHxDics/checkCscpHxDicName', params),
+  // 新建字典
+  createDict: (params) => instance.post('/api/dic/cscpHxDics', params),
+  // 删除字典
+  deleteDict: (id) => instance.post('/api/dic/cscpHxDics/' + id),
+  // 批量删除字典
+  deleteDictAll: (params) => instance.post('/api/dic/cscpHxDics/delAll', qs.stringify(params), {
+    headers: {
+      "Content-Type": 'application/x-www-form-urlencoded'
+    }
+  }),
+  // 查询字典详情
+  getDictInfo: (id) => instance.get('/api/dic/cscpHxDics/' + id),
+  // 查询字典项列表
+  getDictItemList: (params) => instance.get('/api/dic/cscpHxDicItems', { params }),
+  // 校验字典项编码
+  validDicItemCode: (params) => instance.post('/api/dic/cscpHxDicItems/checkCscpHxItemCode', params),
+  // 新建字典项
+  createDictItem: (params) => instance.post('/api/dic/cscpHxDicItems', params),
+  // 编辑字典项
+  updateDictItem: (params) => instance.post('/api/dic/updateCscpHxDicItem', params),
+  // 删除字典项
+  deleteDictItem: (id) => instance.post('/api/dic/cscpHxDicItems/' + id),
+  // 批量删除字典项
+  deleteDictItemAll: (params) => instance.post('/api/dic/cscpHxDicItems/delAll', qs.stringify(params), {
+    headers: {
+      "Content-Type": 'application/x-www-form-urlencoded'
+    }
+  }),
 }
