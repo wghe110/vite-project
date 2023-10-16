@@ -42,4 +42,6 @@ export default {
   updateUser: (params) => instance.post('/api/system/updateCscpUserDetail/0', params),
   // 删除用户
   deleteUser: (userId) => instance.post('/api/system/cscpUsers/' + userId),
+  // 修改密码
+  updatePwd: (params) => instance.post('api/tenant/updateCscpUserPwd', params),
 }

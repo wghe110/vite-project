@@ -81,6 +81,8 @@
     <Detail ref="detailRef"></Detail>
     <!-- edit dialog -->
     <Edit ref="editRef" @success="searchFn"></Edit>
+    <!-- changePwd dialog -->
+    <ChangePwd ref="pwdRef"></ChangePwd>
   </div>
 </template>
 
@@ -90,6 +92,7 @@ import api from "@/apis/system";
 import Create from "./user-components/Create.vue";
 import Detail from "./user-components/Detail.vue";
 import Edit from "./user-components/Edit.vue";
+import ChangePwd from "./user-components/changePwd.vue";
 
 export default {
   components: {
@@ -97,6 +100,7 @@ export default {
     Create,
     Detail,
     Edit,
+    ChangePwd,
   },
   data() {
     return {
@@ -177,10 +181,9 @@ export default {
           {
             text: "修改密码",
             clickFn() {
-              const target = self.$refs.editRef;
+              const target = self.$refs.pwdRef;
               target.visible = true;
-              target.getDetailFn(row.id);
-              target.getMenusFn(row.id);
+              target.initCurrentFn(row);
             },
           },
           {
