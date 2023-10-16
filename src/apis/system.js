@@ -44,4 +44,8 @@ export default {
   deleteUser: (userId) => instance.post('/api/system/cscpUsers/' + userId),
   // 修改密码
   updatePwd: (params) => instance.post('api/tenant/updateCscpUserPwd', params),
+  // 查询操作日志列表
+  getActionLogList: (params) => instance.get('/api/system/cscpLogOperationsByCriteria', { params }),
+  // 查询登录日志列表
+  getLoginLogList: (params) => instance.get('/api/system/cscpLogLoginsByCriteria', { params }),
 }

@@ -1,4 +1,4 @@
-
+// 获取树节点的祖先节点方法
 const getParentIdsFn = (arr, id, parent = []) => {
   let aIds = []
   for (let i = 0; i < arr.length; i++) {
