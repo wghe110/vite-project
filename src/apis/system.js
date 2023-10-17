@@ -82,4 +82,12 @@ export default {
       "Content-Type": 'application/x-www-form-urlencoded'
     }
   }),
+  // 查询菜单列表
+  getMenusTree: () => instance.get('/api/system/cscpAllMenus'),
+  // 新建菜单
+  addMenu: (params) => instance.post('/api/system/menu/addMenu', params),
+  // 删除菜单
+  deleteMenu: (id) => instance.post('/api/system/menu/deleteMenu/' + id),
+  // 菜单详情
+  getMenuInfo: (id) => instance.get('/api/system/cscpMenuss/' + id),
 }

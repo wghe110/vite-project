@@ -56,7 +56,7 @@ export default (self) => ({
   dicSort: [
     { required: true, message: "请输入排序", trigger: "blur" },
     {
-      pattern: /^[1-9]+$/,
+      pattern: /^[0-9]+$/,
       message: "请输入有效数字",
       trigger: "blur",
     }

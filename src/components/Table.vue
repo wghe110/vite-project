@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap-table" ref="tableRef">
-    <el-table v-bind="$attrs" v-on="$listeners" height="100%">
+  <div class="wrap-table">
+    <el-table v-bind="$attrs" ref="tableRef" v-on="$listeners" height="100%">
       <slot></slot>
     </el-table>
   </div>
