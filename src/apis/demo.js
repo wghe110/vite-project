@@ -10,4 +10,5 @@ export default {
   postXDemo: (params) => instance.post('xxx/xxxxx/xxxx', qs.stringify(params), {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   }),
+  getTree: (params) => instance.get('/api/system/car/tree', { params }),
 }
