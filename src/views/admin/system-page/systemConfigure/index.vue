@@ -1,5 +1,11 @@
 <template>
   <div class="wrap-system">
+    <CarMuilSelect v-model="demoVal"></CarMuilSelect>
+
+    <br /><br />
+
+    <CreateMock></CreateMock>
+
     <Demo></Demo>
 
     <br /><br />
@@ -46,18 +52,23 @@ import VueEasyTree from "@wchbrad/vue-easy-tree";
 import "@wchbrad/vue-easy-tree/src/assets/index.scss";
 import oneData from "./mock-tree/one";
 import Demo from "./demo.vue";
-import { arrayToTree } from "@/utils/tool";
+import { arrayToTreeFn } from "@/utils/tool";
 import api from "@/apis/demo";
 import * as pako from "pako";
 import * as atob from "atob";
+import CreateMock from "./mock/create.vue";
+import CarMuilSelect from "./components/CarMuilSelect/index.vue";
 
 export default {
   components: {
     VueEasyTree,
     Demo,
+    CreateMock,
+    CarMuilSelect,
   },
   data() {
     return {
+      demoVal: [],
       timer: null,
       filterText: "",
       carData: oneData,
@@ -128,7 +139,7 @@ export default {
       const nodes = this.patData.filter((item) =>
         aResultKeys.includes(item.value)
       );
-      this.carData = arrayToTree(nodes, "value", "pid");
+      this.carData = arrayToTreeFn(nodes, "value", "pid");
       this.expand = true;
       this.key++;
     },

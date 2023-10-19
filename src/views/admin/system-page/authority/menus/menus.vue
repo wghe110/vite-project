@@ -77,7 +77,7 @@
 <script>
 import api from "@/apis/system";
 import { Icon } from "view-design";
-import { arrayToTree } from "@/utils/tool";
+import { arrayToTreeFn } from "@/utils/tool";
 import { getAncestorIdsFn } from "./tool";
 import Create from "./components/Create.vue";
 import Edit from "./components/Edit.vue";
@@ -108,7 +108,7 @@ export default {
   },
   computed: {
     treeData() {
-      return arrayToTree(this.tableData);
+      return arrayToTreeFn(this.tableData);
     },
   },
   created() {

@@ -10,7 +10,7 @@ export const encryptPassword = (str) => {
 }
 
 // 扁平数组转成树
-export function arrayToTree(arr = [], id = 'id', parentId = 'parentId') {
+export function arrayToTreeFn(arr = [], id = 'id', parentId = 'parentId') {
   let res = []
   let map = new Map()
 
@@ -34,4 +34,18 @@ export function arrayToTree(arr = [], id = 'id', parentId = 'parentId') {
     }
   }
   return res
+}
+
+// 树拍平成一维数组
+export const patTreeFn = (tree, target = []) => {
+  tree.forEach(item => {
+    const { children, ...others } = item
+    target.push({
+      ...others,
+    })
+
+    children && children.length && patTreeFn(children, target)
+  })
+
+  return target
 }

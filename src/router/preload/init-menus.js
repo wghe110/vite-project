@@ -1,5 +1,5 @@
 import api from '@/apis/preload'
-import { arrayToTree } from '@/utils/tool'
+import { arrayToTreeFn } from '@/utils/tool'
 import store from '@/store/index'
 import { cloneDeep } from 'lodash'
 import router from '@/router/index'
@@ -39,7 +39,7 @@ const loadMenus = () => {
 
       const arr = cloneDeep(res)
       const aMenus = arr.filter(item => ['menu1', 'menu2', 'menu2-sp'].includes(item.type))
-      const menus = arrayToTree(aMenus || [])
+      const menus = arrayToTreeFn(aMenus || [])
       store.commit('setMenus', menus)
 
       const arr2 = cloneDeep(res)
