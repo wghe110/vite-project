@@ -1,29 +1,30 @@
 <template>
   <header class="wrap-header">
-    <LeftItem v-bind="$attrs" v-on="$listeners" />
-    <RightItem />
+    <TopItem></TopItem>
+    <BottomItem></BottomItem>
   </header>
 </template>
 
 <script>
-import LeftItem from "./LeftItem.vue";
-import RightItem from "./RightItem.vue";
+import TopItem from "./TopItem.vue";
+import BottomItem from "./BottomItem.vue";
 
 export default {
   components: {
-    LeftItem,
-    RightItem,
+    TopItem,
+    BottomItem,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .wrap-header {
-  height: 64px;
-  background-color: #fff;
-  padding: 0 16px;
+  height: 100px;
+  background-color: #213252;
+  background-image: url("@/assets/bg-header.svg");
+  background-repeat: no-repeat;
+  background-position: left 34px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 </style>

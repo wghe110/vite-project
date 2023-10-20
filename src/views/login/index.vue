@@ -1,5 +1,7 @@
 <template>
   <div class="wrap-login">
+    <h1 class="logo">车管专家</h1>
+
     <section class="content" @keydown.enter="submitFn">
       <aside class="alert">
         <Alert
@@ -10,7 +12,7 @@
       </aside>
 
       <div>
-        <h1 class="tit">统一研发框架</h1>
+        <h1 class="tit">欢迎登录车管专家</h1>
 
         <el-form :model="form" :rules="rules" ref="formRef" label-width="0">
           <el-form-item label="租户名" prop="tenantAccount">
@@ -95,6 +97,67 @@
         </div>
       </div>
     </section>
+
+    <section class="append-info">
+      <ul>
+        <li>
+          <div class="code">
+            <div class="content-code">
+              <img src="@/assets/login/code-app.png" alt="" />
+              <span>扫码下载APP</span>
+            </div>
+            <div class="content-code">
+              <img src="@/assets/login/code-fadeback.png" alt="" />
+              <span>微信扫码反馈</span>
+            </div>
+          </div>
+          <div class="info">
+            <span>运营者：中电鸿信信息科技有限公司</span>
+            <span>开发者：中电鸿信信息科技有限公司</span>
+            <span>版本号：2.5.3</span>
+            <span>上架时间：2022/09/11</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <ul class="clause">
+      <li>
+        <a class="underline" href="/declaration/privacy.html" target="_blank"
+          >隐私条款</a
+        >
+      </li>
+      <li>
+        <a href="/declaration/cgzjyhxy.html" target="_blank">用户协议</a>
+      </li>
+      <li>
+        <a href="/declaration/downprivacy/index.html" target="_blank"
+          >权限描述</a
+        >
+      </li>
+      <li>
+        <a href="/declaration/personList.html" target="_blank"
+          >个人敏感信息列表</a
+        >
+      </li>
+    </ul>
+
+    <footer class="tips">
+      <div>
+        <span style="margin-right: 20px"
+          >中电鸿信信息科技有限公司 版权所有</span
+        >
+        <span style="margin-right: 4px">备案编号</span>
+        <a target="_blank" href="https://beian.miit.gov.cn/"
+          >苏ICP备10010099号-50</a
+        >
+      </div>
+
+      <div>
+        <img src="@/assets/login/tel.svg" class="icon-tel" alt="" />
+        <span>400-8288-298</span>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -293,10 +356,22 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-image: url("/bg.png");
+  background-image: url("@/assets/login/bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  > .logo {
+    width: 130px;
+    height: 54px;
+    font-size: 0;
+    position: fixed;
+    left: 40px;
+    top: 60px;
+    background-image: url("@/assets/login/logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
   > .content {
     width: 448px;
     min-height: 510px;
@@ -313,15 +388,117 @@ export default {
       width: 368px;
     }
     .tit {
-      color: #4f79e3;
-      font-size: 36px;
-      font-weight: 400;
+      color: #1c82f2;
+      font-family: PingFang SC;
+      font-size: 28px;
+      font-weight: bolder;
       margin: 0;
       margin-bottom: 24px;
       line-height: 1.3;
       text-align: center;
     }
   }
+
+  > .tips {
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    > div {
+      display: flex;
+      align-items: center;
+      color: #52555c;
+      font-family: PingFang SC;
+      font-size: 12px;
+      > .icon-tel {
+        position: relative;
+        top: 2px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  > .clause {
+    position: fixed;
+    right: 34px;
+    bottom: 50px;
+    display: flex;
+    > li {
+      list-style: none;
+      > a {
+        color: #2d8cf0;
+        font-size: 12px;
+        margin: 0 6px;
+        line-height: 1.2;
+      }
+      & + li {
+        &::before {
+          content: "|";
+          color: #52555c;
+          font-size: 12px;
+          position: relative;
+          top: -1px;
+        }
+      }
+    }
+  }
+
+  > .append-info {
+    position: fixed;
+    left: 40px;
+    bottom: 60px;
+    > ul {
+      padding: 0;
+      display: flex;
+      > li {
+        list-style: none;
+        > .code {
+          display: flex;
+          margin-bottom: 16px;
+          > .content-code {
+            background-color: #178fff;
+            padding: 6px;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            & + .content-code {
+              margin-left: 16px;
+            }
+            > img {
+              width: 94px;
+              height: 94px;
+              margin-bottom: 8px;
+            }
+            > span {
+              font-size: 14px;
+              font-weight: bolder;
+              color: #fff;
+              text-align: center;
+              line-height: 1.2;
+            }
+          }
+        }
+        > .info {
+          display: flex;
+          flex-direction: column;
+          > span {
+            color: rgba(108, 126, 143, 0.7);
+            font-family: PingFang SC;
+            font-size: 12px;
+            margin: 3px 0;
+            line-height: 1.2;
+          }
+        }
+      }
+    }
+  }
+
   .icon {
     font-size: 14px;
   }

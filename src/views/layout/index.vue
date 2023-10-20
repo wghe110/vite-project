@@ -1,9 +1,7 @@
 <template>
   <div class="wrap">
-    <ComAside v-if="showAside" :collapse="collapse" />
-
     <div class="content">
-      <ComHeader v-if="showHeader" :collapse.sync="collapse" />
+      <ComHeader v-if="showHeader" />
 
       <div class="inner-content">
         <div>
@@ -18,20 +16,16 @@
 import { mapState } from "vuex";
 
 import ComHeader from "@/views/layout/header/index.vue";
-import ComAside from "@/views/layout/aside/index.vue";
 
 export default {
   components: {
     ComHeader,
-    ComAside,
   },
   data() {
-    return {
-      collapse: false,
-    };
+    return {};
   },
   computed: {
-    ...mapState(["showHeader", "showAside"]),
+    ...mapState(["showHeader"]),
   },
   methods: {},
 };
