@@ -14,7 +14,7 @@ export default {
   server: {
     // 反向代理配置
     proxy: {
-      '/api': 'http://180.101.155.26:9001'
+      '/api': 'http://117.88.101.69:8085'
     }
   },
   build: {
