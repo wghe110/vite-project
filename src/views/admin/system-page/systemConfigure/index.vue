@@ -19,5 +19,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.wrap-system {
+  height: 800px;
+}
 </style>

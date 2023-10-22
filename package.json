@@ -19,6 +19,7 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "@wchbrad/vue-easy-tree": "^1.0.12",
     "atob": "^2.1.2",
     "axios": "^0.27.2",
