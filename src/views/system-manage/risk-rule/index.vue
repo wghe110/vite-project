@@ -38,6 +38,6 @@ export default {
 .wrap-rule {
   display: flex;
   flex-wrap: wrap;
-  height: calc(100vh - 170px);
+  height: 100%;
 }
 </style>
