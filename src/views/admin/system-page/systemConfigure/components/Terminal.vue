@@ -130,14 +130,18 @@ export default {
       return obj ? obj.label : "--";
     },
     getValueFn() {
-      const { terminalTypeVo, ...others } = this.config;
+      const { carWarnSettingVo, areaShowSettingVo, ruleSettingVo } =
+        this.config;
+
       const { terminals } = this;
       const terminalId = terminals
         .filter((item) => item.id)
         .map((item) => item.id);
 
       return {
-        ...others,
+        tcarWarnSettingVo: carWarnSettingVo,
+        tareaShowSettingVo: areaShowSettingVo,
+        truleSettingVo: ruleSettingVo,
         terminalTypeVo: {
           terminalId,
         },

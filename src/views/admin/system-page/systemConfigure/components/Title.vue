@@ -10,7 +10,7 @@ export default {};
 
 <style lang="scss" scoped>
 .wrap-tit {
-  margin: 0 0 16px;
+  margin: 0 0 24px;
   color: #242627;
   font-family: PingFang SC;
   font-size: 16px;
