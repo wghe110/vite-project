@@ -66,7 +66,7 @@
 import VueEasyTree from "@wchbrad/vue-easy-tree";
 import "@wchbrad/vue-easy-tree/src/assets/index.scss";
 import { arrayToTreeFn } from "@/utils/tool";
-import { tree, patTree } from "./deal";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -93,14 +93,18 @@ export default {
       treeProps: {
         label: "name",
       },
-      carData: tree,
-      patData: patTree,
+      carData: [],
+      patData: [],
       checkedKeys: [],
       expand: false,
       key: 1,
     };
   },
   computed: {
+    ...mapState({
+      sourceCar: (state) => state.dict.carTree,
+      patCarTree: (state) => state.dict.patCarTree,
+    }),
     cache: {
       get() {
         return this.value;
@@ -117,6 +121,22 @@ export default {
       });
     },
   },
+  watch: {
+    sourceCar: {
+      deep: true,
+      immediate: true,
+      handler(val) {
+        this.carData = val;
+      },
+    },
+    patCarTree: {
+      deep: true,
+      immediate: true,
+      handler(val) {
+        this.patData = val;
+      },
+    },
+  },
   methods: {
     showDialogFn() {
       this.visible = true;
@@ -130,7 +150,7 @@ export default {
     },
     filterTreeFn(val) {
       if (!val) {
-        this.carData = tree;
+        this.carData = this.sourceCar;
         this.expand = false;
         this.key++;
         return;

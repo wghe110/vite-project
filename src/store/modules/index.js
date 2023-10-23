@@ -1,7 +1,5 @@
-import a from './m-a'
-import b from './m-b'
+import dict from './dict'
 
 export default {
-  a,
-  b,
+  dict
 }
