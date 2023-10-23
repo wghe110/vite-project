@@ -37,18 +37,30 @@
       :disabled="!carWarnSettingVo.stop"
       v-model="carWarnSettingVo.stop"
       @change="updateFn"
-    ></SettingItem>
+    >
+      <div class="flex-box">
+        <span class="label">禁行车辆</span>
+        <div class="con">
+          <CarMuilSelect
+            v-model="carWarnSettingVo.carList"
+            :disabled="!carWarnSettingVo.stop"
+          />
+        </div>
+      </div>
+    </SettingItem>
   </c-section-item>
 </template>
 
 <script>
 import ComTit from "./Title.vue";
 import SettingItem from "./alarm/SettingItem.vue";
+import CarMuilSelect from "@/views/components/CarMuilSelect/index.vue";
 
 export default {
   components: {
     ComTit,
     SettingItem,
+    CarMuilSelect,
   },
   props: {
     config: {
@@ -111,5 +123,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.flex-box {
+  display: flex;
+  align-items: center;
+  > .label {
+    margin-right: 16px;
+  }
+  > .con {
+    flex: 1;
+  }
+}
 </style>

@@ -20,7 +20,9 @@ export default {
   },
   data() {
     return {
-      config: {},
+      config: {
+        areaShowSettingVo: {},
+      },
     };
   },
   created() {

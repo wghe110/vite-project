@@ -43,7 +43,9 @@ export default {
     config: {
       type: Object,
       default() {
-        return {};
+        return {
+          areaShowSettingVo: {},
+        };
       },
     },
   },
