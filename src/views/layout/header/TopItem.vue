@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import api from "@/apis/login";
+
 export default {
   data() {
     return {};
@@ -36,6 +38,24 @@ export default {
         default:
           break;
       }
+    },
+    logoutFn() {
+      const params = {
+        url: window.location.origin,
+      };
+
+      api
+        .logout(params)
+        .then(() => {
+          this.$message.success("退出登录成功");
+          localStorage.removeItem("token");
+          this.$router.push("/login");
+          this.$store.commit("setInited", false);
+        })
+        .catch((err) => {
+          console.error(err);
+          this.$message.error("退出登录失败");
+        });
     },
   },
 };

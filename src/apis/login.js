@@ -6,5 +6,5 @@ export default {
   login: (data, headers) => instance.post('/api/system/login', data, {
     headers
   }),
-  logout: () => instance.post('/api/system/logout')
+  logout: (params) => instance.get('/api/system/thirdAuth/tianyi/logout', { params })
 }
