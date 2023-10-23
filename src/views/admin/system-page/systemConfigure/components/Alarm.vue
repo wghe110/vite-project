@@ -42,8 +42,10 @@
         <span class="label">禁行车辆</span>
         <div class="con">
           <CarMuilSelect
+            ref="carSelectRef"
             v-model="carWarnSettingVo.carList"
             :disabled="!carWarnSettingVo.stop"
+            @change="updateFn"
           />
         </div>
       </div>
@@ -89,8 +91,10 @@ export default {
     initDataFn() {
       const { config } = this;
       if (config?.carWarnSettingVo) {
+        const { carList, ...others } = config.carWarnSettingVo;
         this.carWarnSettingVo = {
-          ...config.carWarnSettingVo,
+          ...others,
+          carList: carList.map((item) => item.id),
         };
       } else {
         this.carWarnSettingVo = {};
@@ -105,15 +109,26 @@ export default {
       this.updateFn();
     },
     updateFn() {
-      const newVal = this.getValueFn();
-      this.$emit("update", newVal);
+      this.$nextTick(() => {
+        const newVal = this.getValueFn();
+        this.$emit("update", newVal);
+      });
     },
     getValueFn() {
       const { terminalTypeVo, areaShowSettingVo, ruleSettingVo } = this.config;
-      const { carWarnSettingVo } = this;
+      const { carList, ...others } = this.carWarnSettingVo;
+      const { checkedNodes } = this.$refs.carSelectRef;
+      const newCarList = checkedNodes.map((item) => ({
+        id: item.id,
+        deptName: item.name,
+        keyId: item.keyId,
+      }));
 
       return {
-        tcarWarnSettingVo: carWarnSettingVo,
+        tcarWarnSettingVo: {
+          carList: newCarList,
+          ...others,
+        },
         tareaShowSettingVo: areaShowSettingVo,
         truleSettingVo: ruleSettingVo,
         terminalTypeVo,
