@@ -1,5 +1,5 @@
 <template>
-  <c-dialog title="新增字典" :visible.sync="visible">
+  <c-dialog title="新增租户" :visible.sync="visible">
     <FormCom ref="formComRef"></FormCom>
 
     <template #footer>
@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import FormCom from "./CreateOrEdit.vue";
-import api from "@/apis/system";
+import FormCom from "./CommonForm.vue";
+import api from "@/apis/system-manage/tenant";
 
 export default {
   components: {
@@ -44,16 +44,26 @@ export default {
     createFn() {
       const params = this.$refs.formComRef.getParamsFn();
 
-      api.createDict(params).then((res) => {
-        const { dicId, message } = res;
-        if (dicId) {
-          this.$message.success("新增字典成功");
-          this.$emit("success");
-          this.visible = false;
-        } else {
-          this.$message.error(message || "新增字典失败");
-        }
-      });
+      api
+        .addTenant(params)
+        .then((res) => {
+          try {
+            const {
+              ajax: { id, msg },
+            } = res;
+            if (id) {
+              this.$message.success(msg || "新增租户成功");
+              this.$emit("success");
+              this.visible = false;
+            }
+          } catch (error) {
+            this.$message.success("新增租户失败");
+          }
+        })
+        .catch((err) => {
+          const { data: message } = err;
+          this.$message.error(message || "新增租户失败");
+        });
     },
   },
 };

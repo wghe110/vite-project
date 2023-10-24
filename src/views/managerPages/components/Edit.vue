@@ -1,5 +1,5 @@
 <template>
-  <c-dialog title="编辑字典" :visible.sync="visible">
+  <c-dialog title="编辑租户" :visible.sync="visible">
     <FormCom ref="formComRef" edit></FormCom>
 
     <template #footer>
@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import FormCom from "./CreateOrEdit.vue";
-import api from "@/apis/system";
+import FormCom from "./CommonForm.vue";
+import api from "@/apis/system-manage/tenant";
 
 export default {
   components: {
@@ -44,29 +44,52 @@ export default {
     updateFn() {
       const params = this.$refs.formComRef.getParamsFn();
 
-      api.createDict(params).then((res) => {
-        const { dicId, message } = res;
-        if (dicId) {
-          this.$message.success("编辑字典成功");
-          this.$emit("success");
-          this.visible = false;
-        } else {
-          this.$message.error(message || "编辑字典失败");
-        }
-      });
-    },
-    getDetailFn(dicId) {
       api
-        .getDictInfo(dicId)
+        .updateTenant(params)
         .then((res) => {
-          this.$refs.formComRef.initDataFn(res);
+          try {
+            const {
+              ajax: { id, msg },
+            } = res;
+            if (id) {
+              this.$message.success(msg || "编辑租户成功");
+              this.$emit("success");
+              this.visible = false;
+            }
+          } catch (error) {
+            this.$message.success("编辑租户失败");
+          }
+        })
+        .catch((err) => {
+          const { data: message } = err;
+          this.$message.error(message || "编辑租户失败");
+        });
+    },
+    getDetailFn(id) {
+      api
+        .getTenantInfo(id)
+        .then((res) => {
+          const { menus, ...others } = res;
+          this.$refs.formComRef.initDataFn({
+            ...others,
+          });
         })
         .catch((err) => {
           const {
             data: { message },
           } = err;
-          this.$message.error(message || "获取用户详情失败");
+          this.$message.error(message || "获取详情失败");
         });
+    },
+    getMenusFn(id) {
+      api.getTenantMenus(id).then((res) => {
+        let arr = [];
+        if (res && res.length) {
+          arr = res.map((item) => item.id);
+        }
+
+        this.$refs.formComRef.initMenuFn(arr);
+      });
     },
   },
 };
