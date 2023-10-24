@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import InputMenus from "@/views/admin/system-page/authority/role/components/InputMenus.vue";
+import InputMenus from "./InputMenus.vue";
 import getRules from "./rules";
 import api from "@/apis/system-manage/tenant";
 
@@ -106,7 +106,6 @@ export default {
         },
       },
       props: {
-        children: "items",
         label: "id",
         disabled: "id",
       },

@@ -24,4 +24,6 @@ export default {
   getTenantMenus: (id) => instance.get('/api/cscpTenants/getMenu/' + id),
   // 更新租户
   updateTenant: (params) => instance.post('/api/tenant/updateTenant', params),
+  // 获取菜单列表
+  getMenus: () => instance.get('/api/system/tenant/cscpAllMenus'),
 }

@@ -7,8 +7,8 @@
     :data="menuData"
     :props="props"
     :default-checked-keys="checkedVal"
-    :loading="loading"
     @check-change="checkFn"
+    :loading="loading"
   >
     <template v-slot="{ data }">
       <span>{{ data.title }}</span>
@@ -18,7 +18,8 @@
 
 <script>
 import InputTreeVue from "./InputTree.vue";
-import api from "@/apis/system";
+import api from "@/apis/system-manage/tenant";
+import { arrayToTreeFn } from "@/utils/tool";
 
 export default {
   components: {
@@ -29,7 +30,6 @@ export default {
       type: Object,
       default() {
         return {
-          children: "items",
           label: "id",
         };
       },
@@ -69,10 +69,9 @@ export default {
         roles: 0,
       };
       api
-        .getMenuList(params)
+        .getMenus(params)
         .then((res) => {
-          const { items } = res || {};
-          this.menuData = items || [];
+          this.menuData = arrayToTreeFn(res || []);
         })
         .finally(() => {
           this.loading = false;

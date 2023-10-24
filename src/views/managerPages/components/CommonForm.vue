@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import InputMenus from "@/views/admin/system-page/authority/role/components/InputMenus.vue";
+import InputMenus from "./InputMenus.vue";
 import getRules from "./rules";
 
 export default {
