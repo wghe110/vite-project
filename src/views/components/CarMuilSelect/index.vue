@@ -5,7 +5,7 @@
       multiple
       collapse-tags
       clearable
-      placeholder="请选择"
+      :placeholder="placeholder"
       style="width: 100%"
       :popper-append-to-body="false"
       :disabled="disabled"
@@ -82,6 +82,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    placeholder: {
+      type: String,
+      default: "请选择",
     },
   },
   data() {
