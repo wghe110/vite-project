@@ -108,6 +108,7 @@ export default {
     font-size: 12px;
     line-height: 1.2;
     margin-right: 12px;
+    min-width: 184px;
   }
   .user {
     color: rgba(255, 255, 255, 0.8);

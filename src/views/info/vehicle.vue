@@ -68,21 +68,40 @@
       <c-section-item class="inner-con">
         <div class="info">
           <el-button type="primary" icon="el-icon-plus" @click="createFn"
-            >新增</el-button
+            >新增车辆</el-button
+          >
+          <el-button icon="el-icon-download" @click="createFn"
+            >导出报表</el-button
+          >
+          <el-button icon="el-icon-upload" @click="createFn"
+            >批量导入</el-button
+          >
+          <el-button type="text" icon="el-icon-document" @click="createFn"
+            >下载导入模版</el-button
           >
         </div>
 
         <div class="table-box">
           <c-table :data="tableData">
-            <el-table-column prop="username" label="用户名"> </el-table-column>
-            <el-table-column prop="name" label="姓名"></el-table-column>
-            <el-table-column prop="mobile" label="手机"></el-table-column>
-            <el-table-column prop="email" label="电子邮件"></el-table-column>
+            <el-table-column prop="carNo" label="车牌号"> </el-table-column>
+            <el-table-column prop="carNoColor" label="车牌颜色">
+              <template slot-scope="scope">
+                <span>{{ getCorFn(scope.row.carNoColor) }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="deptName" label="所属部门"></el-table-column>
+            <el-table-column prop="carType" label="车辆类型"></el-table-column>
+            <el-table-column prop="carAddress" label="车籍地"></el-table-column>
+            <el-table-column prop="isyj" label="运营监管" width="80px">
+              <template slot-scope="scope">
+                <span>{{ scope.row.isyj === "1" ? "是" : "否" }}</span>
+              </template>
+            </el-table-column>
             <el-table-column
-              prop="lastLogin"
-              label="最后登录时间"
+              prop="createTime"
+              label="创建时间"
             ></el-table-column>
-            <el-table-column label="操作" width="180">
+            <el-table-column label="操作" width="140">
               <template slot-scope="scope">
                 <c-action-btns :actions="getActionsFn(scope)"></c-action-btns>
               </template>
@@ -204,63 +223,41 @@ export default {
       const self = this;
       const arr = [
         {
-          text: "详情",
+          text: "查看",
           clickFn() {
             const target = self.$refs.detailRef;
             target.visible = true;
             target.getDetailFn(row.userId);
           },
         },
-      ];
-
-      if (row.adminFlag === "0") {
-        arr.push(
-          {
-            text: "修改密码",
-            clickFn() {
-              const target = self.$refs.pwdRef;
-              target.visible = true;
-              target.initCurrentFn(row);
-            },
-          },
-          {
-            text: "编辑",
-            clickFn() {
-              const target = self.$refs.editRef;
-              target.visible = true;
-              target.getDetailFn(row.userId);
-            },
-          },
-          {
-            text: "删除",
-            clickFn() {
-              self
-                .$confirm(
-                  "删除后，账号将无法使用！是否确定删除该账号？",
-                  "警告",
-                  {
-                    confirmButtonText: "确定",
-                    cancelButtonText: "取消",
-                    type: "warning",
-                  }
-                )
-                .then(() => {
-                  self.deleteFn(row.userId);
-                })
-                .catch(() => {});
-            },
-          }
-        );
-      }
-
-      if (row.adminFlag === "0" && row.lockStatus) {
-        arr.push({
-          text: "解锁",
+        {
+          text: "修改",
           clickFn() {
-            self.$message.warning("功能未实现");
+            const target = self.$refs.editRef;
+            target.visible = true;
+            target.getDetailFn(row.userId);
           },
-        });
-      }
+        },
+        {
+          text: "删除",
+          clickFn() {
+            self
+              .$confirm(
+                "删除后，账号将无法使用！是否确定删除该账号？",
+                "警告",
+                {
+                  confirmButtonText: "确定",
+                  cancelButtonText: "取消",
+                  type: "warning",
+                }
+              )
+              .then(() => {
+                self.deleteFn(row.userId);
+              })
+              .catch(() => {});
+          },
+        },
+      ];
 
       return arr;
     },
@@ -299,6 +296,10 @@ export default {
           resolve(opts);
         });
       });
+    },
+    getCorFn(val) {
+      const obj = this.opts.carNoColor.find((item) => item.value === val);
+      return obj ? obj.label : "--";
     },
   },
 };
